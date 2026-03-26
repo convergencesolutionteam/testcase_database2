@@ -1,0 +1,116 @@
+site_name: Test Case Database
+site_url: https://sitename.example
+theme:
+  name: material
+  font:
+    text: Merriweather Sans
+    code: Red Hat Mono
+  logo: assets/LIG Accuver_LIG Innovative Blue.png
+  favicon: assets/LIG Accuver_LIG Innovative Blue.png
+  features:
+    - content.tabs.link   # 탭 메뉴 클릭 시 링크 연동
+    - navigation.indexes  # 카테고리 클릭 시 인덱스 페이지 바로 표시
+    - navigation.expand   # 좌측 메뉴 자동 확장
+    - navigation.footer   # 하단에 '이전/다음' 페이지 버튼 표시
+    - navigation.tags    # 태그 기능 활성화
+    - search.highlight   # 검색어 강조
+    - search.suggest   # 검색어 자동 완성
+    - search.share   # 검색 결과 공유 기능
+
+  palette:
+    # Dark Mode
+    - scheme: slate   # 다크 모드
+      toggle:   # 모드 전환 버튼의 아이콘과 이름을 정의
+        icon: material/weather-sunny
+        name: Dark mode
+      primary: green   # 사이트의 주요 색상(상단바 등)과 강조 색상(버튼 등)을 지정
+      accent: deep purple   # 사이트의 주요 색상(상단바 등)과 강조 색상(버튼 등)을 지정
+
+    # Light Mode
+    - scheme: default   # 라이트 모드
+      toggle:
+        icon: material/weather-night
+        name: Light mode
+      primary: blue
+      accent: deep orange
+# plugins:
+#   - search:
+#       tags: true # 검색 결과에서 태그 필터링 지원
+
+plugins:
+  # - macros
+  - search:   # 검색 엔진 설정
+      highlight_results: true  # 검색어 하이라이트 활성화
+      suggest: true            # 
+      separator: '[\s\-\.]+'
+
+markdown_extensions:   # 마크다운 확장 기능
+  - attr_list   # 이미지 크기 조절 등 마크다운에 속성을 부여
+  - pymdownx.emoji:   # 이모티콘 사용
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:   # 코드 블록에 색상을 입혀 가독성을 높임
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite   # 코드 블록에 색상을 입혀 가독성을 높임
+  - pymdownx.snippets   # 다른 파일의 내용을 문서 안에 불러옴
+  - pymdownx.superfences:   # 텍스트로 Call Flow 같은 다이어그램을 직접 그림
+        custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:   # 한 페이지 내에서 탭을 나누어 내용을 보여줌
+      alternate_style: true
+
+  - admonition   # '참고','주의' 같은 강조 박스와 접다 펴는 상세 보기 박스
+  - pymdownx.details   # '참고','주의' 같은 강조 박스와 접다 펴는 상세 보기 박스
+
+nav:   # 왼쪽 목차 구조를 결정
+  - 🛒 Cart: Cart.md
+  - Category:
+    - Access:
+      - Access(154): TC_Access.md
+    - Voice&Video:
+      - VoNR(19): TC_VoNR.md 
+      - VoLTE(38): TC_VoLTE.md
+      - EPSFB(4): TC_EPSFB.md
+      - ViNR(2): TC_ViNR.md    
+      - ViLTE(4): TC_ViLTE.md
+      - SRVCC(2): TC_SRVCC.md
+      - CSFB(2): TC_CSFB.md  
+      - VoWifi(1): TC_Vowifi.md
+    - Mobility:
+      - Handover(119): TC_Handover.md
+      - Redirection(15): TC_Redirection.md
+      - Reselection(10): TC_Reselection.md
+    - Throughput:
+      - Throughput(132): TC_Throughput.md
+    - ETC:
+      - Application Stationary Test(13): TC_Application_Stationary_Test.md
+      - Backhaul IP Impairment(9): TC_Backhaul_IP_Impairment.md
+      - DSDS(4): TC_DSDS.md
+      - Emergency Service(12): TC_Emergency_Service.md
+      - Feature Test(13): TC_Feature_Test.md
+      - Link Budget(15): TC_Link_Budget.md
+      - Message Service(30): TC_Message_Service.md
+      - Multi-Service(3): TC_Multi_Service.md
+      - Ping(12): TC_Ping.md
+      - RF Performance(15): TC_RF_Performance.md
+      - RLF Recovery(5): TC_RLF_Recovery.md
+      - UE Capability(11): TC_UE_Capability.md
+  
+
+
+copyright: Copyright (C) 2026, LIG Accuver Co., Ltd   # 저작권 정보 표시
+
+extra_css:
+  - https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-html5-3.0.2/sl-2.0.3/datatables.min.css
+  - stylesheets/custom_table.css
+
+extra_javascript:
+  - https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-html5-3.0.2/sl-2.0.3/datatables.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js
+  - javascripts/custom_table.js
+  - javascripts/cart_export.js

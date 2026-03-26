@@ -1,0 +1,148 @@
+/* Custom Table Styles */
+
+/* Layout spacing */
+.dt-layout-row {
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+/* Search input styling */
+.dt-search input {
+    border: 1px solid var(--md-default-fg-color--light);
+    border-radius: 4px;
+    padding: 4px 8px;
+    background-color: var(--md-default-bg-color);
+    color: var(--md-default-fg-color);
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    font-family: inherit;
+    font-size: 0.75rem;
+}
+
+.dt-search input:focus {
+    border-color: var(--md-primary-fg-color);
+    box-shadow: 0 0 0 2px var(--md-primary-fg-color--transparent);
+}
+
+/* Length select styling */
+.dt-length select {
+    border: 1px solid var(--md-default-fg-color--light);
+    border-radius: 4px;
+    padding: 4px;
+    background-color: var(--md-default-bg-color);
+    color: var(--md-default-fg-color);
+    outline: none;
+    font-family: inherit;
+    font-size: 0.75rem;
+}
+
+/* Material Design Buttons - Made Smaller */
+.dt-buttons .dt-button.dt-icon-btn {
+    background-color: var(--md-primary-fg-color) !important;
+    color: var(--md-primary-bg-color) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    font-family: inherit !important;
+    font-weight: 600 !important;
+    font-size: 0.55rem !important;
+    text-transform: uppercase !important;
+    transition: background-color 0.25s, transform 0.1s !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+    margin-right: 4px !important;
+    margin-bottom: 4px !important;
+}
+
+.dt-buttons .dt-button.dt-icon-btn:hover {
+    background-color: var(--md-accent-fg-color) !important;
+    cursor: pointer !important;
+}
+
+.dt-buttons .dt-button.dt-icon-btn:active {
+    transform: translateY(1px) !important;
+    box-shadow: none !important;
+}
+
+/* Allow users to know row is clickable for selection */
+table.dataTable tbody tr {
+    cursor: pointer;
+}
+
+/* Fix CSS for Selected rows */
+table.dataTable tbody tr.selected>td {
+    background-color: var(--md-primary-fg-color--transparent) !important;
+    color: var(--md-default-fg-color) !important;
+}
+
+/* Pagination buttons */
+.dt-paging .dt-paging-button {
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    border: 1px solid transparent !important;
+    margin-left: 2px !important;
+    font-family: inherit !important;
+    font-size: 0.75rem !important;
+    color: var(--md-default-fg-color) !important;
+    transition: background-color 0.2s, color 0.2s !important;
+}
+
+.dt-paging .dt-paging-button.current {
+    background-color: var(--md-primary-fg-color--transparent) !important;
+    border-color: var(--md-primary-fg-color) !important;
+    color: var(--md-default-fg-color) !important;
+    font-weight: bold !important;
+}
+
+.dt-paging .dt-paging-button:hover:not(.current):not(.disabled) {
+    background-color: var(--md-default-fg-color--lightest) !important;
+    border-color: var(--md-default-fg-color--light) !important;
+}
+
+.dt-paging .dt-paging-button.disabled {
+    opacity: 0.5 !important;
+}
+
+/* 웹 표 디자인 변경 (1.png 참조본 적용) */
+.md-typeset table {
+    font-size: 0.8rem !important;
+    /* 가독성에 가장 좋은 기본 사이즈로 되돌림 */
+    border-collapse: collapse !important;
+    border: 1px solid var(--md-default-fg-color--lightest) !important;
+    /* 표 전체 바깥쪽 테두리 */
+}
+
+/* 1.png와 똑같은 가로선만 있는 넓은 리스트형 여백 구조 */
+.md-typeset table th,
+.md-typeset table td {
+    border: none !important;
+    /* 세로선 완전히 제거 */
+    border-bottom: 1px solid var(--md-default-fg-color--lightest) !important;
+    /* 옅은 회색 가로선만 추가 */
+    padding: 12px 18px !important;
+    /* 1.png 처럼 위아래 양옆으로 매우 넉넉한 여백 확보 */
+    text-align: left !important;
+}
+
+/* 중앙 정렬용 컬럼 대응 */
+.md-typeset table td.dt-center,
+.md-typeset table th.dt-center {
+    text-align: center !important;
+}
+
+/* 헤더 구조 */
+.md-typeset table th {
+    background-color: transparent !important;
+    /* 배경색 없이 흰색과 투명으로 깔끔하게 */
+    border-bottom: 2px solid var(--md-default-fg-color--light) !important;
+    /* 헤더 아랫부분만 살짝 더 두껍게 */
+    color: var(--md-default-fg-color) !important;
+}
+
+/* DataTables의 헤더 내 정렬 화살표 버튼과 글씨가 겹치는 현상 해결 */
+table.dataTable thead th,
+table.dataTable thead td {
+    padding-right: 30px !important;
+    /* 화살표 전용 우측 절대 여백 30px 강제 확보 */
+    position: relative;
+    box-sizing: border-box;
+}
