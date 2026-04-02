@@ -15,39 +15,31 @@
 
 | Test case ID | Description | Tech classification | Functional areas classification |
 |---|---|---|---|
-| ACC-001-01 | LTE - Attach Detach (registration) | LTE | Access |
+| SNGL-001-24 | TCP DL CC NSA nCC LTE + NR | NSA | Throughput |
 
 <div class="tc-content-border-box" markdown="1">
 
 ### Test Procedure {: .tc-shaded-header }
 
-1. After the mobile sends a deregistration request, all connections to the network are disconnected.
-2. Mobile sends registration request
-3. Receive registration accept from system
-4. Mobile sends Registration Complete
-5. Deregistration and registration procedures should proceed without problems.
+1. Data download measurement using Autocall FTP, Iperf, etc.
+2. The download session is not disconnected during the set traffic time, and the average throughput of the traffic time is higher than the set threshold.
 
 ### • Autocall Scenario {: .tc-shaded-header }
 
-Using 1 UE  
-Voice > Common  
-**Call Type** - Idle  
-**Idle Time** - 20 sec  
-**Attach / Detach in Idle** - Check  
-**On to Off Time** - 10 sec  
+Using 1 UE <br>
+**Call Type** - App > Iperf <br>
+**Mode** - TCP <br>
+**Direction** - Down(iperf2 server), Down(iperf3 -R option) <br>
 
 ### • AIS Scenario {: .tc-shaded-header }
 
-Using 1 Cell  
-LTE only  
-Cell center  
-Fixed point  
+Using 1 Cell
+Cell center 
+Fixed point
 
 ### Test Pass/Fail Criteria {: .tc-shaded-header }
 
-- Registration Request to Registration Complete latency within the threshold. (Default - Pass: 1000ms, C.Pass: 1200ms)
-- Registration Success Rate higher than the threshold. (Default - Pass: 95%, C.Pass: 90%)
-- Registration Success Rate = Registration Complete Count / Registration Request Count * 100
+- 	Measured ENDC PDSCH throughput higher than the threshold. (Default - Pass: 360Mbps, C.Pass: 288Mbps)
 
 </div>
 
