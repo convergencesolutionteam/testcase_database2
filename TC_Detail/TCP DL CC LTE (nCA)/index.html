@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://sitename.example/TC_Detail/SA%20-%20Registration%20%28Data%20%2B%20VoNR%20IMS%29-FDDTDD/">
+        <link rel="canonical" href="https://sitename.example/TC_Detail/TCP%20DL%20CC%20LTE%20%28nCA%29/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>SA Registration (Data + VoNR IMS) FDDTDD - Test Case Database</title>
+        <title>TCP DL CC LTE (nCA) - Test Case Database</title>
       
     
     
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SA   Registration (Data + VoNR IMS) FDDTDD
+              TCP DL CC LTE (nCA)
             
           </span>
         </div>
@@ -1480,39 +1480,31 @@
 </thead>
 <tbody>
 <tr>
-<td>ACC-001-02</td>
-<td>SA - Registration (Data + VoNR IMS)-FDD/TDD</td>
-<td>SA</td>
-<td>Access</td>
+<td>SNGL-001-07</td>
+<td>TCP DL CC LTE (nCA)</td>
+<td>LTE</td>
+<td>Throughput</td>
 </tr>
 </tbody>
 </table>
 <div class="tc-content-border-box">
 <h3 class="tc-shaded-header" id="test-procedure">Test Procedure</h3>
 <ol>
-<li>After the mobile sends a deregistration request, all connections to the network are disconnected.</li>
-<li>Mobile sends registration request</li>
-<li>Receive registration accept from system</li>
-<li>Mobile sends Registration Complete</li>
-<li>Deregistration and registration procedures should proceed without problems.</li>
+<li>Data download measurement using Autocall FTP, Iperf, etc.</li>
+<li>The download session is not disconnected during the set traffic time, and the average throughput of the traffic time is higher than the set threshold.</li>
 </ol>
 <h3 class="tc-shaded-header" id="autocall-scenario">• Autocall Scenario</h3>
-<p>Using 1 UE<br />
-Voice &gt; Common<br />
-<strong>Call Type</strong> - Idle<br />
-<strong>Idle Time</strong> - 20 sec<br />
-<strong>Attach / Detach in Idle</strong> - Check<br />
-<strong>On to Off Time</strong> - 10 sec  </p>
+<p>Using 1 UE <br>
+<strong>Call Type</strong> - App &gt; Iperf <br>
+<strong>Mode</strong> - TCP <br>
+<strong>Direction</strong> - Down(iperf2 server), Down(iperf3 -R option) <br></p>
 <h3 class="tc-shaded-header" id="ais-scenario">• AIS Scenario</h3>
-<p>Using 1 Cell<br />
-SA only<br />
-Cell center<br />
-Fixed point  </p>
+<p>Using 1 Cell
+Cell center 
+Fixed point</p>
 <h3 class="tc-shaded-header" id="test-passfail-criteria">Test Pass/Fail Criteria</h3>
 <ul>
-<li>Registration Request to Registration Complete latency within the threshold. (Default - Pass: 1000ms, C.Pass: 1200ms)</li>
-<li>Registration Success Rate higher than the threshold. (Default - Pass: 95%, C.Pass: 90%)</li>
-<li>Registration Success Rate = Registration Complete Count / Registration Request Count * 100</li>
+<li>Measured LTE PDSCH TOTAL throughput higher than the threshold. (Default - Pass: 441Mbps, C.Pass: 353Mbps)</li>
 </ul>
 </div>
 </div>
