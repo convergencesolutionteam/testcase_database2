@@ -18,21 +18,21 @@ theme:
     - search.share   # 검색 결과 공유 기능
 
   palette:
+    # Light Mode
+    - scheme: default   # 라이트 모드 (기본값)
+      toggle:
+        icon: material/weather-night
+        name: Switch to Dark mode
+      primary: blue
+      accent: deep orange
+
     # Dark Mode
     - scheme: slate   # 다크 모드
       toggle:   # 모드 전환 버튼의 아이콘과 이름을 정의
         icon: material/weather-sunny
-        name: Dark mode
+        name: Switch to Light mode
       primary: green   # 사이트의 주요 색상(상단바 등)과 강조 색상(버튼 등)을 지정
       accent: deep purple   # 사이트의 주요 색상(상단바 등)과 강조 색상(버튼 등)을 지정
-
-    # Light Mode
-    - scheme: default   # 라이트 모드
-      toggle:
-        icon: material/weather-night
-        name: Light mode
-      primary: blue
-      accent: deep orange
 # plugins:
 #   - search:
 #       tags: true # 검색 결과에서 태그 필터링 지원
@@ -46,6 +46,7 @@ plugins:
 
 markdown_extensions:   # 마크다운 확장 기능
   - attr_list   # 이미지 크기 조절 등 마크다운에 속성을 부여
+  - md_in_html  # HTML 구문 내부에서 마크다운 파싱 허용
   - pymdownx.emoji:   # 이모티콘 사용
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
