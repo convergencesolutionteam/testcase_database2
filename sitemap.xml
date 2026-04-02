@@ -108,4 +108,8 @@
          <loc>https://sitename.example/TC_Vowifi/</loc>
          <lastmod>2026-04-02</lastmod>
     </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/5G%20Addition%20%28upperlayerindication-r15%2C%20RestrictDCNR%29/</loc>
+         <lastmod>2026-04-02</lastmod>
+    </url>
 </urlset>
