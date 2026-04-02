@@ -26,8 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 targets: -1,
                 render: function (data, type, row, meta) {
                     // 마지막 컬럼이 View 관련 데이터일 경우 버튼으로 렌더링 (사전 랜더링으로 깜빡임 방지)
-                    if (data && typeof data === 'string' && (data.trim() === 'View' || data.trim() === 'Doc' || data.includes('tc-view-btn'))) {
-                        return `<button class="tc-view-btn" onclick="window.goToDetail(event, this)" title="View Document"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:text-bottom"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8"/></svg></button>`;
+                    if (data && typeof data === 'string') {
+                        const rawText = data.replace(/<[^>]+>/g, '').trim();
+                        if (rawText === 'View' || rawText === 'Doc' || data.includes('tc-view-btn')) {
+                            return `<button class="tc-view-btn" onclick="window.goToDetail(event, this)" title="View Document"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:text-bottom"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8"/></svg></button>`;
+                        }
                     }
                     return data;
                 }
