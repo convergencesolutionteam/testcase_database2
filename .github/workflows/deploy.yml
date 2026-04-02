@@ -20,3 +20,12 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: python -m mkdocs gh-pages --force
+
+      - name: Build MkDocs
+        run: python -m mkdocs build  # gh-pages 대신 build 사용
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4  # 검증된 배포 액션 사용
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site  # mkdocs build 결과물이 생성되는 폴더
