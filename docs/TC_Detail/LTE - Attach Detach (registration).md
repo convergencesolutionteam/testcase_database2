@@ -15,7 +15,7 @@
 
 | Test case ID | Description | Tech classification | Functional areas classification |
 |---|---|---|---|
-| ACC-001-04 | SA- REGISTRATION / DE-REGISTRATION | SA | Access |
+| ACC-001-01 | LTE - Attach Detach (registration) | LTE | Access |
 
 <div class="tc-content-border-box" markdown="1">
 
@@ -39,7 +39,7 @@ Voice > Common
 ### • AIS Scenario {: .tc-shaded-header }
 
 Using 1 Cell  
-SA only  
+LTE only  
 Cell center  
 Fixed point  
 
