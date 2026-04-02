@@ -170,6 +170,149 @@ document.addEventListener("DOMContentLoaded", function () {
         ws.getColumn(3).width = 75;  // TC Title
         ws.getColumn(4).width = 25;  // Customer
 
+        // NEW LOGIC: Dynamic Detail Pages
+        // Find MkDocs root context
+        const logoElement = document.querySelector('.md-header__button.md-logo, .md-logo');
+        const rootUrl = logoElement ? logoElement.getAttribute('href') : '/';
+        const safeRoot = rootUrl.endsWith('/') ? rootUrl : rootUrl + '/';
+
+        // Loop through all items in the cart and try to fetch their detail pages
+        for (const item of currentCart) {
+            try {
+                const encodedName = encodeURIComponent(item.title);
+                const detailUrl = safeRoot + 'TC_Detail/' + encodedName + '/';
+                const response = await fetch(detailUrl);
+                
+                if (response.ok) {
+                    const htmlText = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(htmlText, "text/html");
+                    
+                    const reportPage = doc.querySelector('.tc-report-page');
+                    if (reportPage) {
+                        // 1. Create a new sheet! Truncate to maximum 31 characters.
+                        let safeSheetName = item.title.substring(0, 31).replace(/[?*\/\\:\[\]]/g, '_');
+                        let attempt = 1;
+                        let finalSheetName = safeSheetName;
+                        while(wb.getWorksheet(finalSheetName)) {
+                            finalSheetName = safeSheetName.substring(0, 28) + "_" + attempt;
+                            attempt++;
+                        }
+                        
+                        const wsDetail = wb.addWorksheet(finalSheetName, {
+                            views: [{ state: 'normal' }],
+                            pageSetup: { paperSize: 9, orientation: 'portrait' }
+                        });
+                        
+                        // Set layout margins
+                        wsDetail.getColumn(1).width = 4;
+                        wsDetail.getColumn(2).width = 20;
+                        wsDetail.getColumn(3).width = 25;
+                        wsDetail.getColumn(4).width = 20;
+                        wsDetail.getColumn(5).width = 30;
+                        
+                        let dRow = 2; // Start adding content at row 2 for top margin
+                        
+                        // 2. Add Title
+                        const titleTag = doc.querySelector('.tc-report-maintitle');
+                        const mainTitleStr = titleTag ? titleTag.innerText.trim() : "Test Case Detail";
+
+                        wsDetail.mergeCells(`B${dRow}:E${dRow}`);
+                        const titleCell = wsDetail.getCell(`B${dRow}`);
+                        titleCell.value = mainTitleStr;
+                        titleCell.font = { size: 22, bold: true, color: { argb: 'FF000000' } };
+                        titleCell.alignment = { vertical: 'middle', horizontal: 'left' };
+                        wsDetail.getRow(dRow).height = 40;
+                        dRow += 2;
+                        
+                        // 3. Parse Meta Table
+                        const metaTable = doc.querySelector('.tc-report-page table');
+                        if (metaTable) {
+                            let headers = [];
+                            metaTable.querySelectorAll('tr:first-child th, tr:first-child td').forEach(th => headers.push(th.innerText.trim()));
+                            let values = [];
+                            metaTable.querySelectorAll('tr:last-child td, tr:last-child th').forEach(td => values.push(td.innerText.trim()));
+                            
+                            if (headers.length >= 4) {
+                                let hr = wsDetail.addRow(['', headers[0], headers[1], headers[2], headers[3]]);
+                                hr.height = 20;
+                                hr.eachCell((cell, colNum) => {
+                                    if(colNum > 1) {
+                                        cell.font = { bold: true, color: { argb: 'FF555555' }, size: 10 };
+                                        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' }};
+                                        cell.border = { top: { style: 'medium', color: { argb: 'FFCCCCCC' } }, bottom: { style: 'thin', color: { argb: 'FFDDDDDD' } }, left: { style: 'thin', color: { argb: 'FFDDDDDD' } }, right: { style: 'thin', color: { argb: 'FFDDDDDD' } }};
+                                    }
+                                });
+                                dRow++;
+                                
+                                let vr = wsDetail.addRow(['', values[0], values[1], values[2], values[3]]);
+                                vr.height = 35;
+                                vr.eachCell((cell, colNum) => {
+                                    if(colNum > 1) {
+                                        cell.font = { bold: true, color: { argb: 'FF000000' }, size: 11 };
+                                        cell.alignment = { wrapText: true, vertical: 'top', horizontal: 'left' };
+                                        cell.border = { bottom: { style: 'medium', color: { argb: 'FFCCCCCC' } }, left: { style: 'thin', color: { argb: 'FFDDDDDD' } }, right: { style: 'thin', color: { argb: 'FFDDDDDD' } }};
+                                    }
+                                });
+                                dRow += 2;
+                            }
+                        }
+
+                        // 4. Content Array Parsing
+                        const borderBox = doc.querySelector('.tc-content-border-box');
+                        if (borderBox) {
+                            Array.from(borderBox.children).forEach(child => {
+                                if (child.tagName === 'H3' || child.classList.contains('tc-shaded-header')) {
+                                    wsDetail.mergeCells(`B${dRow}:E${dRow}`);
+                                    const hCell = wsDetail.getCell(`B${dRow}`);
+                                    hCell.value = child.innerText.trim();
+                                    hCell.font = { bold: true, size: 11 };
+                                    hCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' }};
+                                    hCell.border = { top: { style: 'thin', color: { argb: 'FFDDDDDD' } }, bottom: { style: 'thin', color: { argb: 'FFDDDDDD' } }, left: { style: 'thin', color: { argb: 'FFDDDDDD' } }, right: { style: 'thin', color: { argb: 'FFDDDDDD' } }};
+                                    hCell.alignment = { vertical: 'middle', horizontal: 'left', indent: 1 };
+                                    wsDetail.getRow(dRow).height = 25;
+                                    dRow++;
+                                } else if (child.tagName === 'P' || child.tagName === 'UL' || child.tagName === 'OL') {
+                                    let contentText = "";
+                                    if (child.tagName === 'P') {
+                                        let clone = child.cloneNode(true);
+                                        clone.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
+                                        contentText = clone.textContent.trim();
+                                    } else if (child.tagName === 'UL' || child.tagName === 'OL') {
+                                        let items = [];
+                                        child.querySelectorAll('li').forEach((li, idx) => {
+                                            let prefix = child.tagName === 'OL' ? `${idx + 1}. ` : "• ";
+                                            let clone = li.cloneNode(true);
+                                            clone.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
+                                            items.push(prefix + clone.textContent.trim());
+                                        });
+                                        contentText = items.join('\n');
+                                    }
+                                    
+                                    if (contentText) {
+                                        wsDetail.mergeCells(`B${dRow}:E${dRow}`);
+                                        const cCell = wsDetail.getCell(`B${dRow}`);
+                                        cCell.value = contentText;
+                                        cCell.font = { size: 10 };
+                                        cCell.alignment = { wrapText: true, vertical: 'top', indent: 1 };
+                                        
+                                        // Estimate row height: ~15 height per line. Add buffer.
+                                        let lines = contentText.split('\n').length;
+                                        let maxLineLengths = contentText.split('\n').map(l => l.length);
+                                        let wrapLines = maxLineLengths.reduce((acc, curr) => acc + Math.floor(curr / 80), 0);
+                                        wsDetail.getRow(dRow).height = (lines + wrapLines) * 16 + 10;
+                                        dRow += 2; 
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }
+            } catch (error) {
+                console.warn("Could not fetch detail page for export: ", item.title, error);
+            }
+        }
+
         // Export using FileSaver
         const buffer = await wb.xlsx.writeBuffer();
         const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
