@@ -1,0 +1,26 @@
+name: Deploy MkDocs
+on:
+  push:
+    branches:
+      - main  # 소스가 올라오는 브랜치
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: pip install mkdocs-material  # 본인이 사용하는 테마/플러그인 포함
+      - run: mkdocs build
+      - uses: actions/configure-pages@v4
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site  # mkdocs build 결과물이 저장되는 폴더
+      - uses: actions/deploy-pages@v4
