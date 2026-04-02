@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                         
                         const wsDetail = wb.addWorksheet(finalSheetName, {
-                            views: [{ state: 'normal' }],
+                            views: [{ state: 'normal', showGridLines: false }],
                             pageSetup: { paperSize: 9, orientation: 'portrait' }
                         });
                         
@@ -219,9 +219,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         wsDetail.mergeCells(`B${dRow}:E${dRow}`);
                         const titleCell = wsDetail.getCell(`B${dRow}`);
-                        titleCell.value = mainTitleStr;
+                        titleCell.value = mainTitleStr + "    ";
                         titleCell.font = { size: 22, bold: true, color: { argb: 'FF000000' } };
-                        titleCell.alignment = { vertical: 'middle', horizontal: 'left' };
+                        titleCell.alignment = { vertical: 'middle', horizontal: 'right' };
+                        
+                        // Add Logo to the left side of the title area
+                        if (logoId !== null) {
+                            wsDetail.addImage(logoId, {
+                                tl: { col: 1.1, row: (dRow - 1) + 0.3 }, // Column B (1), vertically centered in row
+                                ext: { width: logoWidth, height: logoHeight }
+                            });
+                        }
+                        
                         wsDetail.getRow(dRow).height = 40;
                         dRow += 2;
                         
@@ -229,9 +238,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         const metaTable = doc.querySelector('.tc-report-page table');
                         if (metaTable) {
                             let headers = [];
-                            metaTable.querySelectorAll('tr:first-child th, tr:first-child td').forEach(th => headers.push(th.innerText.trim()));
                             let values = [];
-                            metaTable.querySelectorAll('tr:last-child td, tr:last-child th').forEach(td => values.push(td.innerText.trim()));
+                            
+                            const theadCells = metaTable.querySelectorAll('thead tr:first-child th, thead tr:first-child td');
+                            if (theadCells.length > 0) {
+                                theadCells.forEach(th => headers.push(th.innerText.trim()));
+                                metaTable.querySelectorAll('tbody tr:first-child td, tbody tr:first-child th').forEach(td => values.push(td.innerText.trim()));
+                            } else {
+                                const rows = metaTable.querySelectorAll('tr');
+                                if (rows.length >= 2) {
+                                    rows[0].querySelectorAll('th, td').forEach(c => headers.push(c.innerText.trim()));
+                                    rows[1].querySelectorAll('th, td').forEach(c => values.push(c.innerText.trim()));
+                                }
+                            }
                             
                             if (headers.length >= 4) {
                                 let hr = wsDetail.addRow(['', headers[0], headers[1], headers[2], headers[3]]);
@@ -239,6 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 hr.eachCell((cell, colNum) => {
                                     if(colNum > 1) {
                                         cell.font = { bold: true, color: { argb: 'FF555555' }, size: 10 };
+                                        cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
                                         cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' }};
                                         cell.border = { top: { style: 'medium', color: { argb: 'FFCCCCCC' } }, bottom: { style: 'thin', color: { argb: 'FFDDDDDD' } }, left: { style: 'thin', color: { argb: 'FFDDDDDD' } }, right: { style: 'thin', color: { argb: 'FFDDDDDD' } }};
                                     }
@@ -250,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 vr.eachCell((cell, colNum) => {
                                     if(colNum > 1) {
                                         cell.font = { bold: true, color: { argb: 'FF000000' }, size: 11 };
-                                        cell.alignment = { wrapText: true, vertical: 'top', horizontal: 'left' };
+                                        cell.alignment = { wrapText: true, vertical: 'middle', horizontal: 'center' };
                                         cell.border = { bottom: { style: 'medium', color: { argb: 'FFCCCCCC' } }, left: { style: 'thin', color: { argb: 'FFDDDDDD' } }, right: { style: 'thin', color: { argb: 'FFDDDDDD' } }};
                                     }
                                 });

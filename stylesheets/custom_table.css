@@ -45,20 +45,89 @@
 .dt-excel-modal {
     position: absolute;
     background-color: var(--md-default-bg-color);
-    border: 1px solid var(--md-default-fg-color--light);
-    border-radius: 4px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
     z-index: 1000;
-    min-width: 150px;
-    max-width: 350px;
-    font-size: 0.65rem;
+    min-width: 220px;
+    max-width: 400px;
+    font-size: 0.70rem;
     color: var(--md-default-fg-color);
-    padding: 6px;
+    padding: 10px;
     display: none;
     top: 100%;
     left: 0;
-    margin-top: 4px;
+    margin-top: 6px;
     white-space: normal !important;
+}
+
+.dt-excel-modal hr {
+    display: none;
+}
+
+.dt-excel-modal-checkboxes {
+    max-height: 240px;
+    overflow-y: auto;
+    margin: 8px 0;
+    padding-right: 6px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.dt-excel-modal-checkboxes label {
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: background-color 0.15s;
+    margin-bottom: 2px;
+}
+
+.dt-excel-modal-checkboxes label:hover {
+    background-color: var(--md-default-fg-color--lightest);
+}
+
+/* Custom scrollbar for modal */
+.dt-excel-modal-checkboxes::-webkit-scrollbar {
+    width: 6px;
+}
+.dt-excel-modal-checkboxes::-webkit-scrollbar-thumb {
+    background-color: var(--md-default-fg-color--light);
+    border-radius: 6px;
+}
+
+.dt-excel-modal-actions, .dt-excel-modal-sort {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.dt-excel-modal-actions {
+    margin-top: 8px;
+}
+.dt-excel-modal-sort {
+    margin-bottom: 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.dt-excel-modal button {
+    flex: 1;
+    background-color: var(--md-default-bg-color);
+    border: 1px solid var(--md-default-fg-color--light);
+    border-radius: 6px;
+    padding: 6px 0;
+    cursor: pointer;
+    color: var(--md-default-fg-color);
+    font-size: 0.65rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.dt-excel-modal button:hover {
+    background-color: var(--md-primary-fg-color--transparent);
+    border-color: var(--md-primary-fg-color);
+    color: var(--md-primary-fg-color);
+    box-shadow: none;
 }
 
 .tc-report-page {

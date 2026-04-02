@@ -109,7 +109,11 @@
          <lastmod>2026-04-02</lastmod>
     </url>
     <url>
-         <loc>https://sitename.example/TC_Detail/5G%20Addition%20%28upperlayerindication-r15%2C%20RestrictDCNR%29/</loc>
+         <loc>https://sitename.example/TC_Detail/LTE%20-%20Attach%20Detach%20%28registration%29/</loc>
+         <lastmod>2026-04-02</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/SA%20-%20Registration%20%28Data%20%2B%20VoNR%20IMS%29-FDDTDD/</loc>
          <lastmod>2026-04-02</lastmod>
     </url>
 </urlset>
