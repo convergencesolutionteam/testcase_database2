@@ -116,4 +116,12 @@
          <loc>https://sitename.example/TC_Detail/TCP%20DL%20CC%20NSA%20nCC%20LTE%20%2B%20NR/</loc>
          <lastmod>2026-04-03</lastmod>
     </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TCP%20DL%20CC%20SA%20%28nCA%29/</loc>
+         <lastmod>2026-04-03</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TCP%20DL%20Throughput%20for%20n%20MHz%20continuous%20bandwidth/</loc>
+         <lastmod>2026-04-03</lastmod>
+    </url>
 </urlset>
