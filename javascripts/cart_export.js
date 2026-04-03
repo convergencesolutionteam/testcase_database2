@@ -20,11 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     `;
 
-    // Group items by category to display them
+    // Group items by category to display them, preserving original index
     const grouped = {};
-    currentCart.forEach(item => {
+    currentCart.forEach((item, originalIndex) => {
         if (!grouped[item.category]) grouped[item.category] = [];
-        grouped[item.category].push(item);
+        grouped[item.category].push({ ...item, originalIndex });
     });
 
     for (const [category, items] of Object.entries(grouped)) {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td style="text-align: center;">${item.technology || ''}</td>
                 <td>${item.title || ''}</td>
                 <td style="text-align: center;">${item.customer || ''}</td>
-                <td style="text-align: center;"><a href="#" class="remove-item" data-title="${item.title}" style="color:var(--md-accent-fg-color); text-decoration: none;" title="Remove this item">✖</a></td>
+                <td style="text-align: center;"><a href="#" class="remove-item" data-index="${item.originalIndex}" style="color:var(--md-accent-fg-color); text-decoration: none;" title="Remove this item">✖</a></td>
             </tr>`;
         });
         html += `</tbody></table></div></div>`;
@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.remove-item').forEach(btn => {
         btn.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetTitle = this.getAttribute('data-title');
-            const newCart = currentCart.filter(item => item.title !== targetTitle);
+            const targetIndex = parseInt(this.getAttribute('data-index'));
+            const newCart = currentCart.filter((_, idx) => idx !== targetIndex);
             localStorage.setItem('tc_cart', JSON.stringify(newCart));
             location.reload();
         });
@@ -70,7 +70,14 @@ document.addEventListener("DOMContentLoaded", function () {
         wb.created = new Date();
 
         const ws = wb.addWorksheet("Test Cases", {
-            views: [{ state: 'frozen', xSplit: 0, ySplit: 2 }] // Freeze first 2 rows
+            views: [{ state: 'frozen', xSplit: 0, ySplit: 2 }], // Freeze first 2 rows
+            pageSetup: { 
+                paperSize: 9, 
+                orientation: 'portrait', 
+                fitToPage: true, 
+                fitToWidth: 1, 
+                fitToHeight: 0 
+            }
         });
 
         // 0. Fetch the Logo dynamically and calculate aspect ratio safely
@@ -201,7 +208,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                         const wsDetail = wb.addWorksheet(finalSheetName, {
                             views: [{ state: 'normal', showGridLines: false }],
-                            pageSetup: { paperSize: 9, orientation: 'portrait' }
+                            pageSetup: { 
+                                paperSize: 9, 
+                                orientation: 'portrait', 
+                                fitToPage: true, 
+                                fitToWidth: 1, 
+                                fitToHeight: 0 
+                            }
                         });
                         
                         // Set layout margins
