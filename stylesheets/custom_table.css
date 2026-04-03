@@ -89,12 +89,14 @@
 .dt-excel-modal-checkboxes::-webkit-scrollbar {
     width: 6px;
 }
+
 .dt-excel-modal-checkboxes::-webkit-scrollbar-thumb {
     background-color: var(--md-default-fg-color--light);
     border-radius: 6px;
 }
 
-.dt-excel-modal-actions, .dt-excel-modal-sort {
+.dt-excel-modal-actions,
+.dt-excel-modal-sort {
     display: flex;
     justify-content: space-between;
     gap: 8px;
@@ -103,6 +105,7 @@
 .dt-excel-modal-actions {
     margin-top: 8px;
 }
+
 .dt-excel-modal-sort {
     margin-bottom: 8px;
     padding-bottom: 12px;
@@ -120,7 +123,7 @@
     font-size: 0.65rem;
     font-weight: 600;
     transition: all 0.2s;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .dt-excel-modal button:hover {
@@ -132,22 +135,29 @@
 
 .tc-report-page {
     background-color: var(--md-default-bg-color);
-    padding: 50px 60px; /* A4 용지 상하좌우 여백 느낌 */
+    padding: 50px 60px;
+    /* A4 용지 상하좌우 여백 느낌 */
     border: 1px solid var(--md-default-fg-color--lightest);
     border-radius: 4px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 공중에 떠 있는 듯한 고급스러운 그림자 */
-    max-width: 900px; /* A4 비율 최대 너비 고정 */
-    margin: 0 auto;   /* 중앙 정렬 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    /* 공중에 떠 있는 듯한 고급스러운 그림자 */
+    max-width: 900px;
+    /* A4 비율 최대 너비 고정 */
+    margin: 0 auto;
+    /* 중앙 정렬 */
 }
+
 .tc-report-top {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 20px;
 }
+
 .tc-report-logo {
     font-size: 0.9rem;
     color: var(--md-primary-fg-color);
 }
+
 .tc-report-maintitle {
     font-size: 2.2rem;
     font-weight: 300;
@@ -155,34 +165,43 @@
     margin: 0 0 30px 0;
     border: none;
 }
+
 /* 첫 번째 메타데이터 표를 이쁘게 꾸미기 */
 .tc-report-page table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 2.5rem;
-    table-layout: fixed; /* 4열 고정 등 균일하게 배치 */
+    table-layout: fixed;
+    /* 4열 고정 등 균일하게 배치 */
     border: 2px solid var(--md-default-fg-color--light) !important;
     border-radius: 6px;
     overflow: hidden;
 }
-.tc-report-page table th, .tc-report-page table td {
+
+.tc-report-page table th,
+.tc-report-page table td {
     border: none !important;
     border-right: 1px solid var(--md-default-fg-color--lightest) !important;
     text-align: left !important;
 }
-.tc-report-page table th:last-child, .tc-report-page table td:last-child {
-    border-right: none !important; /* 마지막 칸은 오늘쪽 선 없음 */
+
+.tc-report-page table th:last-child,
+.tc-report-page table td:last-child {
+    border-right: none !important;
+    /* 마지막 칸은 오늘쪽 선 없음 */
 }
+
 .tc-report-page table th {
-    font-size: 0.65rem !important;
+    font-size: 0.6rem !important;
     color: var(--md-default-fg-color--light) !important;
     font-weight: 600 !important;
     background-color: var(--md-default-fg-color--lightest) !important;
     padding: 8px 12px !important;
     border-bottom: 1px solid var(--md-default-fg-color--lightest) !important;
 }
+
 .tc-report-page table td {
-    font-size: 0.75rem !important;
+    font-size: 0.6rem !important;
     font-weight: 600 !important;
     color: var(--md-default-fg-color) !important;
     padding: 12px 12px !important;
@@ -196,18 +215,20 @@
     border-bottom: 2px solid var(--md-default-fg-color);
     padding: 15px 0;
 }
-.tc-content-border-box p, 
-.tc-content-border-box ul, 
+
+.tc-content-border-box p,
+.tc-content-border-box ul,
 .tc-content-border-box ol {
     padding: 0 15px;
     margin-bottom: 24px;
-    font-size: 0.75rem;
+    font-size: 0.5rem;
     line-height: 1.6;
 }
 
 h3.tc-shaded-header {
-    background-color: var(--md-default-fg-color--lightest); /* 음영 처리 */
-    font-size: 0.8rem;
+    background-color: var(--md-default-fg-color--lightest);
+    /* 음영 처리 */
+    font-size: 0.55rem;
     font-weight: 600;
     color: var(--md-default-fg-color);
     padding: 6px 12px;
