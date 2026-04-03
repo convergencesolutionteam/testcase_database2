@@ -1,0 +1,1 @@
+window.TC_DETAIL_LIST = ["TCP DL CC LTE (nCA)", "TCP DL CC NSA nCC LTE + NR", "TCP DL CC SA (nCA)", "TCP DL Throughput for n MHz continuous bandwidth"];

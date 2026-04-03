@@ -45,7 +45,7 @@
 .dt-excel-modal {
     position: absolute;
     background-color: var(--md-default-bg-color);
-    border: 1px solid var(--md-default-fg-color--lightest);
+    border: none;
     border-radius: 8px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
     z-index: 1000;
@@ -106,16 +106,27 @@
     margin-top: 8px;
 }
 
+/* Vertical layout for sort buttons, no border */
 .dt-excel-modal-sort {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     margin-bottom: 8px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--md-default-fg-color--lightest);
+    padding-bottom: 0;
+    border: none;
+    background-color: var(--md-default-bg-color);
+}
+
+/* Highlight the currently selected sort order */
+.dt-excel-modal-sort button.active {
+    background-color: var(--md-primary-fg-color) !important;
+    color: var(--md-primary-bg-color) !important;
 }
 
 .dt-excel-modal button {
     flex: 1;
-    background-color: var(--md-default-bg-color);
-    border: 1px solid var(--md-default-fg-color--light);
+    background-color: var(--md-default-fg-color--lightest);
+    border: none;
     border-radius: 6px;
     padding: 6px 0;
     cursor: pointer;
@@ -128,9 +139,26 @@
 
 .dt-excel-modal button:hover {
     background-color: var(--md-primary-fg-color--transparent);
-    border-color: var(--md-primary-fg-color);
     color: var(--md-primary-fg-color);
     box-shadow: none;
+}
+
+.dt-excel-icon {
+    cursor: pointer;
+    margin-left: 4px;
+    vertical-align: middle;
+    color: var(--md-default-fg-color--light);
+    transition: color 0.2s;
+}
+
+.dt-excel-icon:hover {
+    color: var(--md-primary-fg-color);
+}
+
+.dt-excel-icon.active {
+    color: var(--md-primary-fg-color);
+    background-color: var(--md-primary-fg-color--transparent);
+    border-radius: 2px;
 }
 
 .tc-report-page {

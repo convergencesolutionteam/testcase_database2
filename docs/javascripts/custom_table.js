@@ -4,7 +4,8 @@ window.goToDetail = function (e, btn) {
     // TC Title 컬럼 데이터 추출
     const tcTitle = tr.children.length > 1 ? tr.children[1].innerText.trim() : '';
 
-    const targets = ['TCP DL CC LTE (nCA)', 'TCP DL CC NSA nCC LTE + NR'];
+    // hooks.py가 생성한 전역 변수 사용 (만약 로드되지 않았다면 빈 배열)
+    const targets = window.TC_DETAIL_LIST || [];
 
     if (targets.includes(tcTitle)) {
         // MkDocs 로고를 기반으로 한 Root 경로 찾기
@@ -141,6 +142,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (modal.style.display === 'block') {
                         modal.style.display = 'none';
                     } else {
+                        // 모달이 열릴 때마다 현재 테이블의 전체 정렬 상태(api.order())를 확인
+                        let tableOrder = api.order(); // [[index, dir], ...] 형식
+                        let direction = null;
+
+                        // 현재 컬럼(index)이 정렬 목록에 있는지 확인
+                        for (let i = 0; i < tableOrder.length; i++) {
+                            if (tableOrder[i][0] === index) {
+                                direction = tableOrder[i][1];
+                                break;
+                            }
+                        }
+
+                        sortAsc.classList.remove('active');
+                        sortDesc.classList.remove('active');
+                        if (direction === 'asc') sortAsc.classList.add('active');
+                        else if (direction === 'desc') sortDesc.classList.add('active');
+
                         modal.style.display = 'block';
                     }
                 });
@@ -161,12 +179,36 @@ document.addEventListener("DOMContentLoaded", function () {
                 sortDiv.className = 'dt-excel-modal-sort';
                 let sortAsc = document.createElement('button');
                 sortAsc.innerHTML = 'Sort A to Z';
-                sortAsc.onclick = function () { column.order('asc').draw(); modal.style.display = 'none'; };
                 let sortDesc = document.createElement('button');
                 sortDesc.innerHTML = 'Sort Z to A';
-                sortDesc.onclick = function () { column.order('desc').draw(); modal.style.display = 'none'; };
+
+                // Apply initial active class (will be updated on every modal open)
+                let currentOrder = column.order();
+                if (currentOrder === 'asc') sortAsc.classList.add('active');
+                else if (currentOrder === 'desc') sortDesc.classList.add('active');
+
+                // 필터 아이콘 강조 업데이트 함수
+                const updateIconStatus = () => {
+                    if (column.search() !== "") icon.classList.add('active');
+                    else icon.classList.remove('active');
+                };
+                updateIconStatus(); // 초기화 시 실행
+
+                sortAsc.onclick = function () {
+                    column.order('asc').draw();
+                    sortAsc.classList.add('active');
+                    sortDesc.classList.remove('active');
+                    modal.style.display = 'none';
+                };
+                sortDesc.onclick = function () {
+                    column.order('desc').draw();
+                    sortDesc.classList.add('active');
+                    sortAsc.classList.remove('active');
+                    modal.style.display = 'none';
+                };
                 sortDiv.appendChild(sortAsc);
                 sortDiv.appendChild(sortDesc);
+
 
                 modal.appendChild(sortDiv);
                 modal.appendChild(document.createElement('hr'));
@@ -240,6 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         let regex = '^(' + selected.map(val => val.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')).join('|') + ')$';
                         column.search(regex, true, false).draw();
                     }
+                    updateIconStatus(); // 필터 적용 시 아이콘 상태 업데이트
                     modal.style.display = 'none';
                 };
 

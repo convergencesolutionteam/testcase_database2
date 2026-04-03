@@ -1,5 +1,7 @@
 site_name: Test Case Database
 site_url: https://sitename.example
+hooks:
+  - hooks.py
 theme:
   name: material
   font:
@@ -113,5 +115,6 @@ extra_javascript:
   - https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-html5-3.0.2/sl-2.0.3/datatables.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js
+  - javascripts/tc_detail_list.js
   - javascripts/custom_table.js
   - javascripts/cart_export.js
