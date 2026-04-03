@@ -191,7 +191,7 @@
     /* 마지막 칸은 오늘쪽 선 없음 */
 }
 
-.tc-report-page table th {
+.md-typeset .tc-report-page table th {
     font-size: 0.6rem !important;
     color: var(--md-default-fg-color--light) !important;
     font-weight: 600 !important;
@@ -200,11 +200,11 @@
     border-bottom: 1px solid var(--md-default-fg-color--lightest) !important;
 }
 
-.tc-report-page table td {
-    font-size: 0.6rem !important;
+.md-typeset .tc-report-page table td {
+    font-size: 0.55rem !important;
     font-weight: 600 !important;
     color: var(--md-default-fg-color) !important;
-    padding: 12px 12px !important;
+    padding: 15px 12px !important;
     vertical-align: top;
     background-color: var(--md-default-bg-color) !important;
 }
