@@ -194,46 +194,76 @@
     border: none;
 }
 
+/* 강제로 표와 부모 요소들을 100% 너비로 확장하고 깜빡임/애니메이션 방지 */
+.tc-report-page .md-typeset__table,
+.tc-report-page .md-typeset__scrollwrap,
+.tc-report-page > div:has(table) {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important; /* 스크롤바 생성으로 인한 크기 변화 원천 차단 */
+    transition: none !important;
+    animation: none !important;
+}
+
 /* 첫 번째 메타데이터 표를 이쁘게 꾸미기 */
 .tc-report-page table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 2.5rem;
-    table-layout: fixed;
-    /* 4열 고정 등 균일하게 배치 */
-    border: 2px solid var(--md-default-fg-color--light) !important;
-    border-radius: 6px;
-    overflow: hidden;
+    display: table !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 2.5rem !important;
+    table-layout: fixed !important;
+    border: 1px solid var(--md-default-fg-color--light) !important; /* 전체 테두리 표시 */
+    box-sizing: border-box !important;
+    transition: none !important;
+    animation: none !important;
 }
 
 .tc-report-page table th,
 .tc-report-page table td {
-    border: none !important;
-    border-right: 1px solid var(--md-default-fg-color--lightest) !important;
+    border: 1px solid var(--md-default-fg-color--lightest) !important; /* 모든 칸에 테두리(그리드) 표시 */
     text-align: left !important;
+    word-break: keep-all !important; /* 단어 쪼개짐 방지 */
 }
 
 .tc-report-page table th:last-child,
 .tc-report-page table td:last-child {
-    border-right: none !important;
-    /* 마지막 칸은 오늘쪽 선 없음 */
+    /* 마지막 칸 예외처리 제거: 테두리 유지 */
 }
 
+/* 정확한 가로 비율 분배 (총합 100%) */
+.tc-report-page table th:nth-child(1),
+.tc-report-page table td:nth-child(1) { width: 18% !important; white-space: nowrap !important; }
+
+.tc-report-page table th:nth-child(2),
+.tc-report-page table td:nth-child(2) { width: 38% !important; white-space: normal !important; } /* Description만 자동 줄바꿈 허용 */
+
+.tc-report-page table th:nth-child(3),
+.tc-report-page table td:nth-child(3) { width: 22% !important; white-space: nowrap !important; }
+
+.tc-report-page table th:nth-child(4),
+.tc-report-page table td:nth-child(4) { width: 22% !important; white-space: normal !important; }
+
 .md-typeset .tc-report-page table th {
-    font-size: 0.55rem !important;
+    font-size: 0.65rem !important;
     color: var(--md-default-fg-color--light) !important;
     font-weight: 600 !important;
     background-color: var(--md-default-fg-color--lightest) !important;
-    padding: 8px 12px !important;
+    padding: 10px 12px !important;
     border-bottom: 1px solid var(--md-default-fg-color--lightest) !important;
 }
 
 .md-typeset .tc-report-page table td {
-    font-size: 0.5rem !important;
+    font-size: 0.6rem !important;
     font-weight: 600 !important;
     color: var(--md-default-fg-color) !important;
     padding: 15px 12px !important;
-    vertical-align: top;
+    vertical-align: top !important;
     background-color: var(--md-default-bg-color) !important;
 }
 
@@ -249,14 +279,14 @@
 .tc-content-border-box ol {
     padding: 0 15px;
     margin-bottom: 24px;
-    font-size: 0.45rem;
+    font-size: 0.55rem; /* Increased from 0.45rem */
     line-height: 1.6;
 }
 
 h3.tc-shaded-header {
     background-color: var(--md-default-fg-color--lightest);
     /* 음영 처리 */
-    font-size: 0.5rem;
+    font-size: 0.6rem; /* Increased from 0.5rem */
     font-weight: 600;
     color: var(--md-default-fg-color);
     padding: 6px 12px;
@@ -395,6 +425,7 @@ table.dataTable thead td {
 }
 
 table.dataTable {
+    display: table !important;
     width: 100% !important;
     min-width: 100% !important;
     table-layout: auto !important;
