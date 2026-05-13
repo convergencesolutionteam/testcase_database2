@@ -81,14 +81,14 @@ document.addEventListener("DOMContentLoaded", function () {
                                 const cell2 = String(row[2]).replace(/<[^>]+>/g, '').trim();
                                 const cell3 = String(row[3]).replace(/<[^>]+>/g, '').trim();
 
-                                const exists = currentCart.find(item => item.title === cell1 && item.category === pageTitle);
+                                const exists = currentCart.find(item => item.testcaseId === cell1 && item.category === pageTitle);
                                 if (!exists) {
                                     currentCart.push({
                                         category: pageTitle,
                                         number: cell0,
-                                        title: cell1,
-                                        technology: cell2,
-                                        customer: cell3
+                                        testcaseId: cell1,
+                                        title: cell2,
+                                        technology: cell3
                                     });
                                     addedCount++;
                                 }

@@ -2,126 +2,682 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://sitename.example/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/Cart/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Access/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Application_Stationary_Test/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Backhaul_IP_Impairment/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_CSFB/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_DSDS/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_EPSFB/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Emergency_Service/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Feature_Test/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Handover/</loc>
-         <lastmod>2026-04-03</lastmod>
-    </url>
-    <url>
-         <loc>https://sitename.example/TC_Link_Budget/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Message_Service/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Multi_Service/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_ORAN_Access/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_ORAN_Application_Stationary_Test/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_ORAN_Emergency_Service/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_ORAN_Handover/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_ORAN_Throughput/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_ORAN_ViLTE/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_ORAN_VoLTE/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_ORAN_VoNR/</loc>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Ping/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_RF_Performance/</loc>
-         <lastmod>2026-04-03</lastmod>
-    </url>
-    <url>
-         <loc>https://sitename.example/TC_RLF_Recovery/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Redirection/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Reselection/</loc>
-         <lastmod>2026-04-03</lastmod>
-    </url>
-    <url>
-         <loc>https://sitename.example/TC_SRVCC/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Throughput/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_UE_Capability/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_ViLTE/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_ViNR/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_VoLTE/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_VoNR/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://sitename.example/TC_Vowifi/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
-         <loc>https://sitename.example/TC_Detail/TCP%20DL%20CC%20LTE%20%28nCA%29/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <loc>https://sitename.example/TC_Detail/ACC-LTE-001/</loc>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
-         <loc>https://sitename.example/TC_Detail/TCP%20DL%20CC%20NSA%20nCC%20LTE%20%2B%20NR/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <loc>https://sitename.example/TC_Detail/ACC-LTE-002/</loc>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
-         <loc>https://sitename.example/TC_Detail/TCP%20DL%20CC%20SA%20%28nCA%29/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <loc>https://sitename.example/TC_Detail/ACC-NSA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
-         <loc>https://sitename.example/TC_Detail/TCP%20DL%20Throughput%20for%20n%20MHz%20continuous%20bandwidth/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <loc>https://sitename.example/TC_Detail/ACC-NSA-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-NSA-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-NSA-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-NSA-005/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-NSA-006/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-NSA-007/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-NSA-008/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-NSA-009/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-SA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-SA-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-SA-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-SA-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-SA-005/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-SA-006/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-SA-007/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-SA-008/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/ACC-SA-009/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/APP-NSA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/APP-SA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/APP-SA-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/APP-SA-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/APP-SA-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/DSDS-ALL-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/DSDS-ALL-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/DSDS-ALL-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/DSDS-ALL-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-NSA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-NSA-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-NSA-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-NSA-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-NSA-005/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-NSA-006/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-NSA-007/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-005/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-006/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-007/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-008/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-009/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-010/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-011/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-012/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-013/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-014/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-015/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-016/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-017/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-018/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-019/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-020/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-021/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-022/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-023/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-024/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-025/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-026/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-027/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-028/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/FNC-SA-029/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-LTE-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-LTE-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-LTE-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-LTE-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-LTE-005/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-LTE-006/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-NSA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-NSA-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-NSA-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-NSA-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-SA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-SA-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-SA-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-SA-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-SA-005/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/HO-WIFI-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-5.2A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-5.3A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-5.4A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-5.6A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-5.9A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-6.11A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-6.12A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-6.2A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-6.3A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-6.4A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-6.5A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-6.6A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-6.7A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-6.8A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-7.1.1A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-7.1.2A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-7.2.1A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-7.2.2A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-7.3.1A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-7.3.2A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-7.5.1A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-7.5.2A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-7.6.1A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-8.1A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-8.3A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-8.7A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TIFG-E2E-8.8A/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-LTE-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-LTE-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-NSA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-NSA-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-NSA-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-NSA-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-NSA-005/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-NSA-006/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-NSA-007/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-NSA-008/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-NSA-009/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-NSA-010/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-NSA-011/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-SA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-SA-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-SA-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-SA-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-SA-005/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/TP-SA-006/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/V-LTE-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/V-LTE-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/V-NSA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/V-NSA-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/V-NSA-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/V-NSA-004/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/V-NSA-005/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/V-SA-001/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/V-SA-002/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/V-SA-003/</loc>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://sitename.example/TC_Detail/V-WIFI-001/</loc>
+         <lastmod>2026-05-13</lastmod>
     </url>
 </urlset>
