@@ -112,11 +112,11 @@ nav:   # 왼쪽 목차 구조를 결정
 copyright: Copyright (C) 2026, LIG Accuver Co., Ltd   # 저작권 정보 표시
 
 extra_css:
-  - https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-html5-3.0.2/sl-2.0.3/datatables.min.css
+  - https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/sl-2.0.3/datatables.min.css
   - stylesheets/custom_table.css
 
 extra_javascript:
-  - https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-html5-3.0.2/sl-2.0.3/datatables.min.js
+  - https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/sl-2.0.3/datatables.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js
   - javascripts/tc_detail_list.js
