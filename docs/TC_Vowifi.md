@@ -1,5 +1,5 @@
 # VoWifi (1)
 
-| # | TC Title | Technology | Customer | Detail |
+| # | TestCase ID | TC Title | Technology | Detail |
 |---|---|---|---|---|
-| 1 | VoWiFi Call Performance - VoWiFi MO -> VoWiFi MT | Wifi | TMO | View |
+| 1 | V-WIFI-001 | VoWiFi Call Performance | Wi-Fi | View |

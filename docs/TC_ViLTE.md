@@ -1,8 +1,5 @@
-# ViLTE (4)
+# ViLTE (1)
 
-| # | TC Title | Technology | Customer | Detail |
+| # | TestCase ID | TC Title | Technology | Detail |
 |---|---|---|---|---|
-| 1 | NSA Video Streaming - Stationary Test(Poor/Good/Fair/Excellent position) | 5G-NSA | Rakuten | View |
-| 2 | Simultaneous ViLTE + LTE Data + SMS (ViLTE MO -> ViLTE MT)-Band-FDD | 4G | TMO | View |
-| 3 | Simultaneous ViLTE and LTE Data (ViLTE MO -> ViLTE MT) | 4G | TMO | View |
-| 4 | ViLTE Stationary Test(Poor/Good/Fair/Excellent position) | 4G | Rakuten | View |
+| 1 | V-LTE-002 | Upgrade VoLTE Call to ViLTE | 4G | View |

@@ -73,38 +73,42 @@ nav:   # 왼쪽 목차 구조를 결정
   - 🛒 Cart: Cart.md
   - Category:
     - Access:
-      - Access(154): TC_Access.md
-    - Voice&Video:
-      - VoNR(19): TC_VoNR.md 
-      - VoLTE(38): TC_VoLTE.md
-      - EPSFB(4): TC_EPSFB.md
-      - ViNR(2): TC_ViNR.md    
-      - ViLTE(4): TC_ViLTE.md
-      - SRVCC(2): TC_SRVCC.md
-      - CSFB(2): TC_CSFB.md  
-      - VoWifi(1): TC_Vowifi.md
+      - Access(20): TC_Access.md
     - Mobility:
-      - Handover(119): TC_Handover.md
-      - Redirection(15): TC_Redirection.md
-      - Reselection(10): TC_Reselection.md
+      - Handover(12): TC_Handover.md
+      - Redirection(2): TC_Redirection.md
+      - Reselection(2): TC_Reselection.md
     - Throughput:
-      - Throughput(132): TC_Throughput.md
+      - Throughput(19): TC_Throughput.md
+    - Voice&Video:
+      - CSFB(1): TC_CSFB.md
+      - EPSFB(1): TC_EPSFB.md
+      - ViLTE(1): TC_ViLTE.md
+      - ViNR(1): TC_ViNR.md
+      - VoLTE(5): TC_VoLTE.md
+      - VoNR(1): TC_VoNR.md
+      - VoWifi(1): TC_Vowifi.md
+
     - ETC:
-      - Application Stationary Test(13): TC_Application_Stationary_Test.md
-      - Backhaul IP Impairment(9): TC_Backhaul_IP_Impairment.md
+      - Application Stationary Test(5): TC_Application_Stationary_Test.md
+      - Backhaul IP Impairment(4): TC_Backhaul_IP_Impairment.md
       - DSDS(4): TC_DSDS.md
-      - Emergency Service(12): TC_Emergency_Service.md
-      - Feature Test(13): TC_Feature_Test.md
-      - Link Budget(15): TC_Link_Budget.md
-      - Message Service(30): TC_Message_Service.md
-      - Multi-Service(3): TC_Multi_Service.md
-      - Ping(12): TC_Ping.md
-      - RF Performance(15): TC_RF_Performance.md
-      - RLF Recovery(5): TC_RLF_Recovery.md
-      - UE Capability(11): TC_UE_Capability.md
-  
-
-
+      - Emergency Service(2): TC_Emergency_Service.md
+      - Feature Test(15): TC_Feature_Test.md
+      - Message Service(5): TC_Message_Service.md
+      - Multi-service(1): TC_Multi_Service.md
+      - Ping(2): TC_Ping.md
+      - RF Performance(5): TC_RF_Performance.md
+      - UE Capability(2): TC_UE_Capability.md
+    - O-RAN:
+      - O-RAN Access(3): TC_ORAN_Access.md
+      - O-RAN Application Stationary Test(1): TC_ORAN_Application_Stationary_Test.md
+      - O-RAN Emergency Service(2): TC_ORAN_Emergency_Service.md
+      - O-RAN Handover(6): TC_ORAN_Handover.md
+      - O-RAN Throughput(11): TC_ORAN_Throughput.md
+      - O-RAN ViLTE(2): TC_ORAN_ViLTE.md
+      - O-RAN VoLTE(1): TC_ORAN_VoLTE.md
+      - O-RAN VoNR(1): TC_ORAN_VoNR.md
 copyright: Copyright (C) 2026, LIG Accuver Co., Ltd   # 저작권 정보 표시
 
 extra_css:

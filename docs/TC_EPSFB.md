@@ -1,9 +1,5 @@
-# EPSFB (4)
+# EPSFB (1)
 
-| # | TC Title | Technology | Customer | Detail |
+| # | TestCase ID | TC Title | Technology | Detail |
 |---|---|---|---|---|
-| 1 | EPS-FB Call Performance - VoLTE MO -> VoLTE MT-FDD/TDD | 5G-SA | TMO | View |
-| 2 | EPS-FB Call Performance (Connected Mode) - MO -> MT | 5G-SA | ETC | View |
-| 3 | EPS-FB ViLTE Call Performance (Connected Mode) - MO -> MT | 5G-SA | TMO | View |
-| 4 | EPS-FB VoLTE Call Performance (Idle Mode) - MO -> MT | 5G-SA | ETC, TMO | View |
-
+| 1 | V-SA-001 | Simultaneous EPSFB and LTE Data Performance | 5G-SA | View |

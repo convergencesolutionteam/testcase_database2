@@ -1,6 +1,5 @@
-# ViNR (2)
+# ViNR (1)
 
-| # | TC Title | Technology | Customer | Detail |
+| # | TestCase ID | TC Title | Technology | Detail |
 |---|---|---|---|---|
-| 1 | SA - ViNR Calling with Hotspot service enabled -Band-FDD/TDD | 5G-SA | TMO | View |
-| 2 | Simultaneous ViNR + NR Data + SMS (ViNR MO -> ViNR MT)-Band-FDD | 5G-SA | TMO | View |
+| 1 | V-SA-002 | Upgrade VoNR Call to ViNR | 5G-SA | View |

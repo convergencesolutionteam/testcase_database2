@@ -4,6 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const currentCart = JSON.parse(localStorage.getItem('tc_cart') || '[]');
 
+    // Handle old cart format by clearing it
+    if (currentCart.length > 0 && currentCart[0].testcaseId === undefined) {
+        localStorage.removeItem('tc_cart');
+        location.reload();
+        return;
+    }
+
     if (currentCart.length === 0) {
         cartContainer.innerHTML = '<p style="color: grey; padding: 2rem; border-radius: 8px; border: 1px dashed #ccc; text-align: center;">Your cart is currently empty.<br><br>Please navigate to the Test Case tables, select the items you want, and click the <b>"🛒 Add to Cart ✓"</b> button.</p>';
         return;
@@ -30,12 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
     for (const [category, items] of Object.entries(grouped)) {
         html += `<h3 style="margin-top: 2rem; border-bottom: 1px solid var(--md-default-fg-color--lightest); padding-bottom: 0.5rem;">📂 ${category} <span style="font-size:0.8em; color:gray;">(${items.length} items)</span></h3>`;
         html += `<div class="md-typeset__scrollwrap"><div class="md-typeset__table"><table>`;
-        html += `<thead><tr><th>Technology</th><th>TC Title</th><th>Customer</th><th>Remove</th></tr></thead><tbody>`;
+        html += `<thead><tr><th>TestCase ID</th><th>TC Title</th><th>Technology</th><th>Remove</th></tr></thead><tbody>`;
         items.forEach((item, index) => {
             html += `<tr>
-                <td style="text-align: center;">${item.technology || ''}</td>
+                <td style="text-align: center;">${item.testcaseId || ''}</td>
                 <td>${item.title || ''}</td>
-                <td style="text-align: center;">${item.customer || ''}</td>
+                <td style="text-align: center;">${item.technology || ''}</td>
                 <td style="text-align: center;"><a href="#" class="remove-item" data-index="${item.originalIndex}" style="color:var(--md-accent-fg-color); text-decoration: none;" title="Remove this item">✖</a></td>
             </tr>`;
         });
@@ -126,8 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        // 2. Add Headers (Row 2) -> Reordered: Category, Tech, Title, Customer (And no #)
-        const headerRow = ws.addRow(['Category', 'Technology', 'TC Title', 'Customer']);
+        // 2. Add Headers (Row 2) -> Reordered: Category, TestCase ID, TC Title, Technology
+        const headerRow = ws.addRow(['Category', 'TestCase ID', 'TC Title', 'Technology']);
         headerRow.height = 25;
         headerRow.eachCell((cell, colNumber) => {
             cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 12 };
@@ -147,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let rowIndex = 0;
         for (const [category, items] of Object.entries(grouped)) {
             items.forEach((item) => {
-                const row = ws.addRow([item.category, item.technology, item.title, item.customer]);
+                const row = ws.addRow([item.category, item.testcaseId, item.title, item.technology]);
                 row.eachCell((cell, colNumber) => {
                     cell.border = {
                         top: { style: 'thin', color: { argb: 'FFDDDDDD' } },
@@ -173,9 +180,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // 4. Adjust Column Widths (Adjusted for 4 elements)
         ws.getColumn(1).width = 25;  // Category
-        ws.getColumn(2).width = 20;  // Technology
+        ws.getColumn(2).width = 20;  // TestCase ID
         ws.getColumn(3).width = 75;  // TC Title
-        ws.getColumn(4).width = 25;  // Customer
+        ws.getColumn(4).width = 25;  // Technology
 
         // NEW LOGIC: Dynamic Detail Pages
         // Find MkDocs root context
@@ -186,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Loop through all items in the cart and try to fetch their detail pages
         for (const item of currentCart) {
             try {
-                const encodedName = encodeURIComponent(item.title);
+                const encodedName = encodeURIComponent(item.testcaseId);
                 const detailUrl = safeRoot + 'TC_Detail/' + encodedName + '/';
                 const response = await fetch(detailUrl);
                 
@@ -198,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const reportPage = doc.querySelector('.tc-report-page');
                     if (reportPage) {
                         // 1. Create a new sheet! Truncate to maximum 31 characters.
-                        let safeSheetName = item.title.substring(0, 31).replace(/[?*\/\\:\[\]]/g, '_');
+                        let safeSheetName = item.testcaseId.substring(0, 31).replace(/[?*\/\\:\[\]]/g, '_');
                         let attempt = 1;
                         let finalSheetName = safeSheetName;
                         while(wb.getWorksheet(finalSheetName)) {
@@ -279,7 +286,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                 dRow++;
                                 
                                 let vr = wsDetail.addRow(['', values[0], values[1], values[2], values[3]]);
-                                vr.height = 35;
+                                
+                                // Description(values[1])의 길이에 따라 동적으로 높이 계산 (기본 35, 너비 25 기준 약 22글자당 1줄)
+                                let descLength = values[1] ? values[1].length : 0;
+                                let estimatedLines = Math.max(1, Math.ceil(descLength / 22));
+                                vr.height = Math.max(35, estimatedLines * 16 + 10);
+                                
                                 vr.eachCell((cell, colNum) => {
                                     if(colNum > 1) {
                                         cell.font = { bold: true, color: { argb: 'FF000000' }, size: 11 };

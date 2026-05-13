@@ -1,0 +1,5 @@
+# O-RAN VoLTE (1)
+
+| # | TestCase ID | TC Title | Technology | Detail |
+|---|---|---|---|---|
+| 1 | TIFG-E2E-7.3.1A | VoLTE Stationary Test(Poor/Good/Fair/Excellent position) | 4G | View |

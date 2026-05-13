@@ -1,17 +1,19 @@
-# Feature Test (13)
+# Feature Test (15)
 
-| # | TC Title                                              | Technology  | Customer        | Detail |
-|---|-------------------------------------------------------|-------------|-----------------|---|
-| 1 | 5G_CDRX                                               | 5G-NSA      | NIPA            | View |
-| 2 | CA 20+20 MHz: Load Balancing/Equalization of UEs across two Carriers/Cells | 5G-SA | Comcast,Charter | View |
-| 3 | CA cell addition success rate in Near/Mid/Far cell    | 5G-NSA      | DISH            | View |
-| 4 | DRX operation / Short cycle configured(or not configured) / Parameters configured by RRC | 5G-SA | NIPA            | View |
-| 5 | Load Balancing between FR1 Carriers based on resource  | 5G-SA       | Comcast         | View |
-| 6 | NBIoT_PSM                                             | NB-IoT      | NIPA            | View |
-| 7 | Network Slicing feature                               | 5G-SA       | Comcast,Charter | View |
-| 8 | NR C-DRX Operation Verification Test                  | 5G-SA       | NIPA            | View |
-| 9 | QoS Scheduling (DL)                                   | 5G-SA       | Comcast         | View |
-|10 | QoS Scheduling (UL)                                   | 5G-SA       | Comcast         | View |
-|11 | UL Split Parameter Verification                       | 5G-NSA      | NIPA            | View |
-|12 | UL Waveform Support (DFT-s-OFDM from/to CP-OFDM)      | 5G-SA       | Comcast         | View |
-|13 | Uplink CA (nCC) Verification Test                     | 5G-SA       | NIPA            | View |
+| # | TestCase ID | TC Title | Technology | Detail |
+|---|---|---|---|---|
+| 1 | FNC-NSA-001 | CA Cell Addition Success Rate in Near/Mid/Far Cell | 5G-NSA | View |
+| 2 | FNC-SA-005 | Bandwidth Part (BWP) Support | 5G-SA | View |
+| 3 | FNC-SA-006 | Beam Switching due to UE Mobility on the same PCI | 5G-SA | View |
+| 4 | FNC-SA-007 | Load Balancing between FR1 Carriers based on resource | 5G-SA | View |
+| 5 | FNC-SA-008 | Network Slicing feature | 5G-SA | View |
+| 6 | FNC-SA-009 | Network triggered transition from RRC-Idle to RRC Connected state | 5G-SA | View |
+| 7 | FNC-SA-010 | Network triggered transition from RRC-Inactive to RRC Connected state | 5G-SA | View |
+| 8 | FNC-SA-011 | New RRC Connection after T311 timer expiry | 5G-SA | View |
+| 9 | FNC-SA-012 | NR System Information Acquisition | 5G-SA | View |
+| 10 | FNC-SA-013 | UE Inactivity Management: RRC-Connected to RRC-Idle mode due to user inactivity | 5G-SA | View |
+| 11 | FNC-SA-014 | UE Inactivity Management: RRC-Connected to RRC-Inactive mode due to user inactivity | 5G-SA | View |
+| 12 | FNC-SA-015 | UE Inactivity Management: RRC-Inactive to RRC-idle mode due to user inactivity | 5G-SA | View |
+| 13 | FNC-SA-016 | UE triggered transition from RRC-Idle to RRC Connected state | 5G-SA | View |
+| 14 | FNC-SA-017 | UE triggered transition from RRC-Inactive to RRC Connected state | 5G-SA | View |
+| 15 | FNC-SA-018 | UL Waveform Support (DFT-s-OFDM from/to CP-OFDM) | 5G-SA | View |

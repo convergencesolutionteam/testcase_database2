@@ -1,6 +1,5 @@
-# CSFB (2)
+# CSFB (1)
 
-| # | TC Title | Technology | Customer | Detail |
+| # | TestCase ID | TC Title | Technology | Detail |
 |---|---|---|---|---|
-| 1 | MO/MT CSFB - Active Mode | 4G | TMO | View |
-| 2 | MO/MT CSFB - Idle Mode | 4G | TMO | View |
+| 1 | V-LTE-001 | CSFB Establishment and Latency Performance | 4G | View |
