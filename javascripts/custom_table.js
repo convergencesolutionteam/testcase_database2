@@ -25,6 +25,14 @@ document.addEventListener("DOMContentLoaded", function () {
     $('.md-typeset table').not('.tc-report-page table, .tc-report-table').DataTable({
         columnDefs: [
             {
+                targets: 1,
+                className: 'tc-id-col'
+            },
+            {
+                targets: 2,
+                className: 'tc-title-col'
+            },
+            {
                 orderable: false,
                 targets: -1,
                 render: function (data, type, row, meta) {
@@ -40,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } // 마지막 열 정렬 비활성화 및 버튼 렌더링
         ],
         layout: {
-            topStart: {
+            top2Start: {
                 buttons: [
                     {
                         extend: 'csvHtml5',
@@ -80,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 const cell1 = String(row[1]).replace(/<[^>]+>/g, '').trim();
                                 const cell2 = String(row[2]).replace(/<[^>]+>/g, '').trim();
                                 const cell3 = String(row[3]).replace(/<[^>]+>/g, '').trim();
+                                const cell4 = String(row[4]).replace(/<[^>]+>/g, '').trim(); // Report Type
 
                                 const exists = currentCart.find(item => item.testcaseId === cell1 && item.category === pageTitle);
                                 if (!exists) {
@@ -88,7 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                         number: cell0,
                                         testcaseId: cell1,
                                         title: cell2,
-                                        technology: cell3
+                                        technology: cell3,
+                                        reportType: cell4
                                     });
                                     addedCount++;
                                 }
@@ -99,6 +109,19 @@ document.addEventListener("DOMContentLoaded", function () {
                             const dedupeMsg = (addedCount < selectedData.length) ? ` (duplicates ignored)` : ``;
                             alert(`Added ${addedCount} items to the Cart (Category: '${pageTitle}')!${dedupeMsg}\nTotal items in Cart: ${currentCart.length}`);
                         }
+                    }
+                ]
+            },
+            top2End: {
+                search: {}
+            },
+            topEnd: {
+                buttons: [
+                    {
+                        extend: 'colvis',
+                        text: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:text-bottom; margin-right:4px;"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg> Columns',
+                        className: 'dt-custom-colvis-btn',
+                        postfixButtons: ['colvisRestore']
                     }
                 ]
             }

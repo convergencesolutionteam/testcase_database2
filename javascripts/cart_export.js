@@ -37,12 +37,13 @@ document.addEventListener("DOMContentLoaded", function () {
     for (const [category, items] of Object.entries(grouped)) {
         html += `<h3 style="margin-top: 2rem; border-bottom: 1px solid var(--md-default-fg-color--lightest); padding-bottom: 0.5rem;">📂 ${category} <span style="font-size:0.8em; color:gray;">(${items.length} items)</span></h3>`;
         html += `<div class="md-typeset__scrollwrap"><div class="md-typeset__table"><table>`;
-        html += `<thead><tr><th>TestCase ID</th><th>TC Title</th><th>Technology</th><th>Remove</th></tr></thead><tbody>`;
+        html += `<thead><tr><th>TestCase ID</th><th>TC Title</th><th>Technology</th><th>Report Type</th><th>Remove</th></tr></thead><tbody>`;
         items.forEach((item, index) => {
             html += `<tr>
                 <td style="text-align: center;">${item.testcaseId || ''}</td>
                 <td>${item.title || ''}</td>
                 <td style="text-align: center;">${item.technology || ''}</td>
+                <td style="text-align: center;">${item.reportType || ''}</td>
                 <td style="text-align: center;"><a href="#" class="remove-item" data-index="${item.originalIndex}" style="color:var(--md-accent-fg-color); text-decoration: none;" title="Remove this item">✖</a></td>
             </tr>`;
         });
@@ -133,8 +134,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        // 2. Add Headers (Row 2) -> Reordered: Category, TestCase ID, TC Title, Technology
-        const headerRow = ws.addRow(['Category', 'TestCase ID', 'TC Title', 'Technology']);
+        // 2. Add Headers (Row 2) -> Reordered: Category, TestCase ID, TC Title, Technology, Report Type
+        const headerRow = ws.addRow(['Category', 'TestCase ID', 'TC Title', 'Technology', 'Report Type']);
         headerRow.height = 25;
         headerRow.eachCell((cell, colNumber) => {
             cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 12 };
@@ -154,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let rowIndex = 0;
         for (const [category, items] of Object.entries(grouped)) {
             items.forEach((item) => {
-                const row = ws.addRow([item.category, item.testcaseId, item.title, item.technology]);
+                const row = ws.addRow([item.category, item.testcaseId, item.title, item.technology, item.reportType]);
                 row.eachCell((cell, colNumber) => {
                     cell.border = {
                         top: { style: 'thin', color: { argb: 'FFDDDDDD' } },
@@ -164,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     };
                     cell.alignment = { vertical: 'middle', wrapText: true };
 
-                    if (colNumber === 1 || colNumber === 2 || colNumber === 4) {
+                    if (colNumber === 1 || colNumber === 2 || colNumber === 4 || colNumber === 5) {
                         cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
                     }
                 });
@@ -178,11 +179,12 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        // 4. Adjust Column Widths (Adjusted for 4 elements)
+        // 4. Adjust Column Widths (Adjusted for 5 elements)
         ws.getColumn(1).width = 25;  // Category
         ws.getColumn(2).width = 20;  // TestCase ID
         ws.getColumn(3).width = 75;  // TC Title
-        ws.getColumn(4).width = 25;  // Technology
+        ws.getColumn(4).width = 20;  // Technology
+        ws.getColumn(5).width = 20;  // Report Type
 
         // NEW LOGIC: Dynamic Detail Pages
         // Find MkDocs root context
