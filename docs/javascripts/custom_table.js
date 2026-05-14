@@ -58,11 +58,287 @@ document.addEventListener("DOMContentLoaded", function () {
                         exportOptions: { columns: ':not(:last-child)', modifier: { search: 'applied' } }
                     },
                     {
-                        extend: 'excelHtml5',
                         text: 'XLSX 📄💾',
                         className: 'md-button md-button--primary dt-icon-btn',
-                        attr: { title: 'Export Filtered Results to Excel' },
-                        exportOptions: { columns: ':not(:last-child)', modifier: { search: 'applied' } }
+                        attr: { title: 'Export Filtered Results to Excel with Details' },
+                        action: async function (e, dt, node, config) {
+                            const filteredData = dt.rows({ search: 'applied' }).data().toArray();
+                            if (filteredData.length === 0) {
+                                alert("No data to export.");
+                                return;
+                            }
+
+                            const originalText = node.html();
+                            try {
+                                node.html('⏳ Exporting...');
+                                node.css('pointer-events', 'none');
+
+                                let pageTitle = document.title.split('-')[0].trim();
+                                const h1 = document.querySelector('h1');
+                                if (h1 && window.getComputedStyle(h1).display !== 'none') {
+                                    pageTitle = h1.innerText.replace(/\(.*?\)/g, '').trim();
+                                }
+
+                                const items = filteredData.map(row => ({
+                                    category: pageTitle,
+                                    number: String(row[0]).replace(/<[^>]+>/g, '').trim(),
+                                    testcaseId: String(row[1]).replace(/<[^>]+>/g, '').trim(),
+                                    title: String(row[2]).replace(/<[^>]+>/g, '').trim(),
+                                    technology: String(row[3]).replace(/<[^>]+>/g, '').trim(),
+                                    reportType: String(row[4]).replace(/<[^>]+>/g, '').trim()
+                                }));
+
+                                const wb = new ExcelJS.Workbook();
+                                wb.creator = 'Test Case Database';
+                                wb.created = new Date();
+
+                                const ws = wb.addWorksheet("Test Cases", {
+                                    views: [{ state: 'frozen', xSplit: 0, ySplit: 2 }],
+                                    pageSetup: { paperSize: 9, orientation: 'portrait', fitToPage: true, fitToWidth: 1, fitToHeight: 0 }
+                                });
+
+                                let logoId = null;
+                                let logoWidth = 120;
+                                let logoHeight = 26;
+
+                                try {
+                                    let faviconHref = document.querySelector('link[rel="icon"]')?.getAttribute('href');
+                                    if (!faviconHref) faviconHref = '../assets/LIG%20Accuver_LIG%20Innovative%20Blue.png';
+
+                                    const response = await fetch(faviconHref);
+                                    if (response.ok) {
+                                        const buffer = await response.arrayBuffer();
+                                        logoId = wb.addImage({ buffer: buffer, extension: 'png' });
+
+                                        const blob = new Blob([buffer], { type: "image/png" });
+                                        const img = new Image();
+                                        img.src = URL.createObjectURL(blob);
+                                        await new Promise(r => img.onload = r);
+
+                                        logoHeight = 26;
+                                        logoWidth = Math.round(img.width * (logoHeight / img.height));
+                                    }
+                                } catch (e) {
+                                    console.warn("Could not load logo for Excel export.", e);
+                                }
+
+                                ws.mergeCells('A1:E1');
+                                ws.getCell('A1').value = `Test Cases     `;
+                                ws.getCell('A1').font = { size: 16, bold: true, color: { argb: 'FF1F4E79' } };
+                                ws.getCell('A1').fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFFFFF' } };
+                                ws.getCell('A1').alignment = { vertical: 'middle', horizontal: 'right' };
+                                ws.getRow(1).height = 45;
+
+                                if (logoId !== null) {
+                                    ws.addImage(logoId, {
+                                        tl: { col: 0.2, row: 0.8 },
+                                        ext: { width: logoWidth, height: logoHeight }
+                                    });
+                                }
+
+                                const headerRow = ws.addRow(['Category', 'TestCase ID', 'TC Title', 'Technology', 'Report Type']);
+                                headerRow.height = 25;
+                                headerRow.eachCell((cell) => {
+                                    cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 12 };
+                                    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF4F81BD' } };
+                                    cell.alignment = { vertical: 'middle', horizontal: 'center' };
+                                    cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } };
+                                });
+
+                                items.forEach((item, index) => {
+                                    const row = ws.addRow([item.category, item.testcaseId, item.title, item.technology, item.reportType]);
+                                    row.eachCell((cell, colNumber) => {
+                                        cell.border = {
+                                            top: { style: 'thin', color: { argb: 'FFDDDDDD' } },
+                                            left: { style: 'thin', color: { argb: 'FFDDDDDD' } },
+                                            bottom: { style: 'thin', color: { argb: 'FFDDDDDD' } },
+                                            right: { style: 'thin', color: { argb: 'FFDDDDDD' } }
+                                        };
+                                        cell.alignment = { vertical: 'middle', wrapText: true };
+                                        if (colNumber === 1 || colNumber === 2 || colNumber === 4 || colNumber === 5) {
+                                            cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+                                        }
+                                    });
+                                    if (index % 2 === 1) {
+                                        row.eachCell((cell) => {
+                                            cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF9F9F9' } };
+                                        });
+                                    }
+                                });
+
+                                ws.getColumn(1).width = 25;
+                                ws.getColumn(2).width = 20;
+                                ws.getColumn(3).width = 75;
+                                ws.getColumn(4).width = 20;
+                                ws.getColumn(5).width = 20;
+
+                                const logoElement = document.querySelector('.md-header__button.md-logo, .md-logo');
+                                const rootUrl = logoElement ? logoElement.getAttribute('href') : '/';
+                                const safeRoot = rootUrl.endsWith('/') ? rootUrl : rootUrl + '/';
+
+                                for (const item of items) {
+                                    try {
+                                        const encodedName = encodeURIComponent(item.testcaseId);
+                                        const detailUrl = safeRoot + 'TC_Detail/' + encodedName + '/';
+                                        const response = await fetch(detailUrl);
+                                        
+                                        if (response.ok) {
+                                            const htmlText = await response.text();
+                                            const parser = new DOMParser();
+                                            const doc = parser.parseFromString(htmlText, "text/html");
+                                            
+                                            const reportPage = doc.querySelector('.tc-report-page');
+                                            if (reportPage) {
+                                                let safeSheetName = item.testcaseId.substring(0, 31).replace(/[?*\/\\:\[\]]/g, '_');
+                                                let attempt = 1;
+                                                let finalSheetName = safeSheetName;
+                                                while(wb.getWorksheet(finalSheetName)) {
+                                                    finalSheetName = safeSheetName.substring(0, 28) + "_" + attempt;
+                                                    attempt++;
+                                                }
+                                                
+                                                const wsDetail = wb.addWorksheet(finalSheetName, {
+                                                    views: [{ state: 'normal', showGridLines: false }],
+                                                    pageSetup: { paperSize: 9, orientation: 'portrait', fitToPage: true, fitToWidth: 1, fitToHeight: 0 }
+                                                });
+                                                
+                                                wsDetail.getColumn(1).width = 4;
+                                                wsDetail.getColumn(2).width = 20;
+                                                wsDetail.getColumn(3).width = 25;
+                                                wsDetail.getColumn(4).width = 20;
+                                                wsDetail.getColumn(5).width = 30;
+                                                
+                                                let dRow = 2;
+                                                const titleTag = doc.querySelector('.tc-report-maintitle');
+                                                const mainTitleStr = titleTag ? titleTag.innerText.trim() : "Test Case Detail";
+
+                                                wsDetail.mergeCells(`B${dRow}:E${dRow}`);
+                                                const titleCell = wsDetail.getCell(`B${dRow}`);
+                                                titleCell.value = mainTitleStr + "    ";
+                                                titleCell.font = { size: 22, bold: true, color: { argb: 'FF000000' } };
+                                                titleCell.alignment = { vertical: 'middle', horizontal: 'right' };
+                                                
+                                                if (logoId !== null) {
+                                                    wsDetail.addImage(logoId, {
+                                                        tl: { col: 1.1, row: (dRow - 1) + 0.3 },
+                                                        ext: { width: logoWidth, height: logoHeight }
+                                                    });
+                                                }
+                                                
+                                                wsDetail.getRow(dRow).height = 40;
+                                                dRow += 2;
+                                                
+                                                const metaTable = doc.querySelector('.tc-report-page table');
+                                                if (metaTable) {
+                                                    let headers = [];
+                                                    let values = [];
+                                                    
+                                                    const theadCells = metaTable.querySelectorAll('thead tr:first-child th, thead tr:first-child td');
+                                                    if (theadCells.length > 0) {
+                                                        theadCells.forEach(th => headers.push(th.innerText.trim()));
+                                                        metaTable.querySelectorAll('tbody tr:first-child td, tbody tr:first-child th').forEach(td => values.push(td.innerText.trim()));
+                                                    } else {
+                                                        const rows = metaTable.querySelectorAll('tr');
+                                                        if (rows.length >= 2) {
+                                                            rows[0].querySelectorAll('th, td').forEach(c => headers.push(c.innerText.trim()));
+                                                            rows[1].querySelectorAll('th, td').forEach(c => values.push(c.innerText.trim()));
+                                                        }
+                                                    }
+                                                    
+                                                    if (headers.length >= 4) {
+                                                        let hr = wsDetail.addRow(['', headers[0], headers[1], headers[2], headers[3]]);
+                                                        hr.height = 20;
+                                                        hr.eachCell((cell, colNum) => {
+                                                            if(colNum > 1) {
+                                                                cell.font = { bold: true, color: { argb: 'FF555555' }, size: 10 };
+                                                                cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+                                                                cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' }};
+                                                                cell.border = { top: { style: 'medium', color: { argb: 'FFCCCCCC' } }, bottom: { style: 'thin', color: { argb: 'FFDDDDDD' } }, left: { style: 'thin', color: { argb: 'FFDDDDDD' } }, right: { style: 'thin', color: { argb: 'FFDDDDDD' } }};
+                                                            }
+                                                        });
+                                                        dRow++;
+                                                        
+                                                        let vr = wsDetail.addRow(['', values[0], values[1], values[2], values[3]]);
+                                                        
+                                                        let descLength = values[1] ? values[1].length : 0;
+                                                        let estimatedLines = Math.max(1, Math.ceil(descLength / 22));
+                                                        vr.height = Math.max(35, estimatedLines * 16 + 10);
+                                                        
+                                                        vr.eachCell((cell, colNum) => {
+                                                            if(colNum > 1) {
+                                                                cell.font = { bold: true, color: { argb: 'FF000000' }, size: 11 };
+                                                                cell.alignment = { wrapText: true, vertical: 'middle', horizontal: 'center' };
+                                                                cell.border = { bottom: { style: 'medium', color: { argb: 'FFCCCCCC' } }, left: { style: 'thin', color: { argb: 'FFDDDDDD' } }, right: { style: 'thin', color: { argb: 'FFDDDDDD' } }};
+                                                            }
+                                                        });
+                                                        dRow += 2;
+                                                    }
+                                                }
+
+                                                const borderBox = doc.querySelector('.tc-content-border-box');
+                                                if (borderBox) {
+                                                    Array.from(borderBox.children).forEach(child => {
+                                                        if (child.tagName === 'H3' || child.classList.contains('tc-shaded-header')) {
+                                                            wsDetail.mergeCells(`B${dRow}:E${dRow}`);
+                                                            const hCell = wsDetail.getCell(`B${dRow}`);
+                                                            hCell.value = child.innerText.trim();
+                                                            hCell.font = { bold: true, size: 11 };
+                                                            hCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' }};
+                                                            hCell.border = { top: { style: 'thin', color: { argb: 'FFDDDDDD' } }, bottom: { style: 'thin', color: { argb: 'FFDDDDDD' } }, left: { style: 'thin', color: { argb: 'FFDDDDDD' } }, right: { style: 'thin', color: { argb: 'FFDDDDDD' } }};
+                                                            hCell.alignment = { vertical: 'middle', horizontal: 'left', indent: 1 };
+                                                            wsDetail.getRow(dRow).height = 25;
+                                                            dRow++;
+                                                        } else if (child.tagName === 'P' || child.tagName === 'UL' || child.tagName === 'OL') {
+                                                            let contentText = "";
+                                                            if (child.tagName === 'P') {
+                                                                let clone = child.cloneNode(true);
+                                                                clone.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
+                                                                contentText = clone.textContent.trim();
+                                                            } else if (child.tagName === 'UL' || child.tagName === 'OL') {
+                                                                let listItems = [];
+                                                                child.querySelectorAll('li').forEach((li, idx) => {
+                                                                    let prefix = child.tagName === 'OL' ? `${idx + 1}. ` : "• ";
+                                                                    let clone = li.cloneNode(true);
+                                                                    clone.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
+                                                                    listItems.push(prefix + clone.textContent.trim());
+                                                                });
+                                                                contentText = listItems.join('\n');
+                                                            }
+                                                            
+                                                            if (contentText) {
+                                                                wsDetail.mergeCells(`B${dRow}:E${dRow}`);
+                                                                const cCell = wsDetail.getCell(`B${dRow}`);
+                                                                cCell.value = contentText;
+                                                                cCell.font = { size: 10 };
+                                                                cCell.alignment = { wrapText: true, vertical: 'top', indent: 1 };
+                                                                
+                                                                let lines = contentText.split('\n').length;
+                                                                let maxLineLengths = contentText.split('\n').map(l => l.length);
+                                                                let wrapLines = maxLineLengths.reduce((acc, curr) => acc + Math.floor(curr / 80), 0);
+                                                                wsDetail.getRow(dRow).height = (lines + wrapLines) * 16 + 10;
+                                                                dRow += 2; 
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        }
+                                    } catch (error) {
+                                        console.warn("Could not fetch detail page for export: ", item.title, error);
+                                    }
+                                }
+
+                                const buffer = await wb.xlsx.writeBuffer();
+                                const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+                                saveAs(blob, `${pageTitle}_Export.xlsx`);
+                            } catch (err) {
+                                console.error(err);
+                                alert("Export failed.");
+                            } finally {
+                                node.html(originalText);
+                                node.css('pointer-events', 'auto');
+                            }
+                        }
                     },
                     {
                         text: '🛒 Add to Cart ✓',
