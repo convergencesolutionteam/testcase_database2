@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // 1. Add Big Title & Logo Holder (Row 1)
-        ws.mergeCells('A1:D1'); // Only 4 columns now
+        ws.mergeCells('A1:E1'); // 5 columns
         ws.getCell('A1').value = `Test Cases     `;
         ws.getCell('A1').font = { size: 16, bold: true, color: { argb: 'FF1F4E79' } };
         ws.getCell('A1').fill = {

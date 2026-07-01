@@ -109,6 +109,10 @@ nav:   # 왼쪽 목차 구조를 결정
       - O-RAN ViLTE(2): TC_ORAN_ViLTE.md
       - O-RAN VoLTE(1): TC_ORAN_VoLTE.md
       - O-RAN VoNR(1): TC_ORAN_VoNR.md
+    - MCX:
+      - MCX(7): TC_MCX.md
+    - WiFi:
+      - WiFi(7): TC_WiFi.md
 copyright: Copyright (C) 2026, LIG Accuver Co., Ltd   # 저작권 정보 표시
 
 extra_css:

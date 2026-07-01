@@ -47,6 +47,12 @@ Explore our extensive library to find and export the perfect test cases for your
 * 📁 [O-RAN VoLTE(1)](TC_ORAN_VoLTE.md)
 * 📁 [O-RAN VoNR(1)](TC_ORAN_VoNR.md)
 
+### MCX
+* 📁 [MCX(7)](TC_MCX.md)
+
+### WiFi
+* 📁 [WiFi(7)](TC_WiFi.md)
+
 <!-- 
 ---
 
