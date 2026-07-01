@@ -1,0 +1,128 @@
+site_name: Test Case Database
+site_url: https://sitename.example
+hooks:
+  - hooks.py
+theme:
+  name: material
+  font:
+    text: Merriweather Sans
+    code: Red Hat Mono
+  logo: assets/LIG Accuver_LIG Innovative Blue.png
+  favicon: assets/LIG Accuver_LIG Innovative Blue.png
+  features:
+    - content.tabs.link   # ??ë©”ë‰´ ?´ë¦­ ??ë§í¬ ?°ë™
+    - navigation.indexes  # ì¹´í…Œê³ ë¦¬ ?´ë¦­ ???¸ë±???˜ì´ì§€ ë°”ë¡œ ?œì‹œ
+    - navigation.expand   # ì¢Œì¸¡ ë©”ë‰´ ?ë™ ?•ì¥
+    - navigation.footer   # ?˜ë‹¨??'?´ì „/?¤ìŒ' ?˜ì´ì§€ ë²„íŠ¼ ?œì‹œ
+    - navigation.tags    # ?œê·¸ ê¸°ëŠ¥ ?œì„±??
+    - search.highlight   # ê²€?‰ì–´ ê°•ì¡°
+    - search.suggest   # ê²€?‰ì–´ ?ë™ ?„ì„±
+    - search.share   # ê²€??ê²°ê³¼ ê³µìœ  ê¸°ëŠ¥
+
+  palette:
+    # Light Mode
+    - scheme: default   # ?¼ì´??ëª¨ë“œ (ê¸°ë³¸ê°?
+      toggle:
+        icon: material/weather-night
+        name: Switch to Dark mode
+      primary: blue
+      accent: deep orange
+
+    # Dark Mode
+    - scheme: slate   # ?¤í¬ ëª¨ë“œ
+      toggle:   # ëª¨ë“œ ?„í™˜ ë²„íŠ¼???„ì´ì½˜ê³¼ ?´ë¦„???•ì˜
+        icon: material/weather-sunny
+        name: Switch to Light mode
+      primary: green   # ?¬ì´?¸ì˜ ì£¼ìš” ?‰ìƒ(?ë‹¨ë°???ê³?ê°•ì¡° ?‰ìƒ(ë²„íŠ¼ ????ì§€??
+      accent: deep purple   # ?¬ì´?¸ì˜ ì£¼ìš” ?‰ìƒ(?ë‹¨ë°???ê³?ê°•ì¡° ?‰ìƒ(ë²„íŠ¼ ????ì§€??
+# plugins:
+#   - search:
+#       tags: true # ê²€??ê²°ê³¼?ì„œ ?œê·¸ ?„í„°ë§?ì§€??
+
+plugins:
+  # - macros
+  - search:   # ê²€???”ì§„ ?¤ì •
+      highlight_results: true  # ê²€?‰ì–´ ?˜ì´?¼ì´???œì„±??
+      suggest: true            # 
+      separator: '[\s\-\.]+'
+
+markdown_extensions:   # ë§ˆí¬?¤ìš´ ?•ì¥ ê¸°ëŠ¥
+  - attr_list   # ?´ë?ì§€ ?¬ê¸° ì¡°ì ˆ ??ë§ˆí¬?¤ìš´???ì„±??ë¶€??
+  - md_in_html  # HTML êµ¬ë¬¸ ?´ë??ì„œ ë§ˆí¬?¤ìš´ ?Œì‹± ?ˆìš©
+  - pymdownx.emoji:   # ?´ëª¨?°ì½˜ ?¬ìš©
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:   # ì½”ë“œ ë¸”ë¡???‰ìƒ???…í? ê°€?…ì„±???’ì„
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite   # ì½”ë“œ ë¸”ë¡???‰ìƒ???…í? ê°€?…ì„±???’ì„
+  - pymdownx.snippets   # ?¤ë¥¸ ?Œì¼???´ìš©??ë¬¸ì„œ ?ˆì— ë¶ˆëŸ¬??
+  - pymdownx.superfences:   # ?ìŠ¤?¸ë¡œ Call Flow ê°™ì? ?¤ì´?´ê·¸?¨ì„ ì§ì ‘ ê·¸ë¦¼
+        custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:   # ???˜ì´ì§€ ?´ì—????„ ?˜ëˆ„???´ìš©??ë³´ì—¬ì¤?
+      alternate_style: true
+
+  - admonition   # 'ì°¸ê³ ','ì£¼ì˜' ê°™ì? ê°•ì¡° ë°•ìŠ¤?€ ?‘ë‹¤ ?´ëŠ” ?ì„¸ ë³´ê¸° ë°•ìŠ¤
+  - pymdownx.details   # 'ì°¸ê³ ','ì£¼ì˜' ê°™ì? ê°•ì¡° ë°•ìŠ¤?€ ?‘ë‹¤ ?´ëŠ” ?ì„¸ ë³´ê¸° ë°•ìŠ¤
+
+nav:   # ?¼ìª½ ëª©ì°¨ êµ¬ì¡°ë¥?ê²°ì •
+  - ?›’ Cart: Cart.md
+  - Category:
+    - Access:
+      - Access(20): TC_Access.md
+    - Mobility:
+      - Handover(12): TC_Handover.md
+      - Redirection(2): TC_Redirection.md
+      - Reselection(2): TC_Reselection.md
+    - Throughput:
+      - Throughput(19): TC_Throughput.md
+    - Voice&Video:
+      - CSFB(1): TC_CSFB.md
+      - EPSFB(1): TC_EPSFB.md
+      - ViLTE(1): TC_ViLTE.md
+      - ViNR(1): TC_ViNR.md
+      - VoLTE(5): TC_VoLTE.md
+      - VoNR(1): TC_VoNR.md
+      - VoWifi(1): TC_Vowifi.md
+
+    - ETC:
+      - Application Stationary Test(5): TC_Application_Stationary_Test.md
+      - Backhaul IP Impairment(4): TC_Backhaul_IP_Impairment.md
+      - DSDS(4): TC_DSDS.md
+      - Emergency Service(2): TC_Emergency_Service.md
+      - Feature Test(15): TC_Feature_Test.md
+      - Message Service(5): TC_Message_Service.md
+      - Multi-service(1): TC_Multi_Service.md
+      - Ping(2): TC_Ping.md
+      - RF Performance(5): TC_RF_Performance.md
+      - UE Capability(2): TC_UE_Capability.md
+    - O-RAN:
+      - O-RAN Access(3): TC_ORAN_Access.md
+      - O-RAN Application Stationary Test(1): TC_ORAN_Application_Stationary_Test.md
+      - O-RAN Emergency Service(2): TC_ORAN_Emergency_Service.md
+      - O-RAN Handover(6): TC_ORAN_Handover.md
+      - O-RAN Throughput(11): TC_ORAN_Throughput.md
+      - O-RAN ViLTE(2): TC_ORAN_ViLTE.md
+      - O-RAN VoLTE(1): TC_ORAN_VoLTE.md
+      - O-RAN VoNR(1): TC_ORAN_VoNR.md
+    - MCX:
+      - MCX(7): TC_MCX.md
+    - WiFi:
+      - WiFi(7): TC_WiFi.md
+copyright: Copyright (C) 2026, LIG Accuver Co., Ltd   # ?€?‘ê¶Œ ?•ë³´ ?œì‹œ
+
+extra_css:
+  - https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/sl-2.0.3/datatables.min.css
+  - stylesheets/custom_table.css
+
+extra_javascript:
+  - https://cdn.datatables.net/v/dt/jq-3.7.0/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/sl-2.0.3/datatables.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js
+  - javascripts/tc_detail_list.js?v=123
+  - javascripts/custom_table.js
+  - javascripts/cart_export.js

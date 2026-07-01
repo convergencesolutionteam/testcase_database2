@@ -44,4 +44,16 @@ def on_config(config):
     else:
         print(f"WARNING -  [Hook] TC_Detail directory not found at: {detail_dir}")
 
+    import time
+    timestamp = str(int(time.time()))
+    if 'extra_javascript' in config:
+        new_extra_js = []
+        for js in config['extra_javascript']:
+            js_str = str(js)
+            if js_str.startswith('javascripts/') and '?' not in js_str:
+                new_extra_js.append(f"{js_str}?v={timestamp}")
+            else:
+                new_extra_js.append(js)
+        config['extra_javascript'] = new_extra_js
+
     return config
